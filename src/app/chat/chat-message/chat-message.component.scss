@@ -1,0 +1,20 @@
+:host {
+  margin: 1rem;
+}
+
+.message {
+  max-width: 40%;
+  display: flex;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.message-text {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: gray;
+}
