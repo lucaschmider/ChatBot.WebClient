@@ -1,5 +1,4 @@
-<mat-toolbar *ngIf="configurationService.configuration$ | async as configuration" color="accent">
-
+<mat-toolbar *ngIf="configurationService.configuration$ | async as configuration" color="primary">
     <span>{{configuration.Title}}</span>
     <span class="spacer"></span>
     <button mat-icon-button aria-label="">
