@@ -1,0 +1,8 @@
+<mat-toolbar *ngIf="configurationService.configuration$ | async as configuration" color="accent">
+
+    <span>{{configuration.Title}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
