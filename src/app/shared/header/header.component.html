@@ -1,7 +1,17 @@
 <mat-toolbar *ngIf="configurationService.configuration$ | async as configuration" color="primary">
-    <span>{{configuration.Title}}</span>
+    <span (click)="navigateToRoot()" id="title">{{configuration.Title}}</span>
     <span class="spacer"></span>
-    <button mat-icon-button aria-label="">
+    <button mat-icon-button aria-label="" [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
     </button>
 </mat-toolbar>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Abmelden</span>
+    </button>
+    <button mat-menu-item (click)="navigateToStats()">
+        <mat-icon>trending_up</mat-icon>
+        <span>Statistiken</span>
+    </button>
+</mat-menu>
