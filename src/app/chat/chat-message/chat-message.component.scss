@@ -3,7 +3,6 @@
 }
 
 .message {
-  max-width: 40%;
   display: flex;
 }
 
@@ -17,4 +16,5 @@
   padding: 1rem;
   border-radius: 5px;
   background-color: gray;
+  max-width: 40%;
 }
