@@ -7,6 +7,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -15,7 +16,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,
