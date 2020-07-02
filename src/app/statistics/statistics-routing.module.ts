@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StatisticsComponent } from './statistics.component';
+import { StatisticsMainComponent } from './statistics-main/statistics-main.component';
 
-const routes: Routes = [{ path: '', component: StatisticsComponent }];
+const routes: Routes = [{ path: '', component: StatisticsMainComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
