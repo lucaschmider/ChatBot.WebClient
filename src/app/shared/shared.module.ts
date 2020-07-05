@@ -7,6 +7,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -15,7 +18,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,
@@ -23,7 +27,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

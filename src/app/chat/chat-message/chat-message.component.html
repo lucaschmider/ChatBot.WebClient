@@ -1,8 +1,6 @@
-<div class="message" [ngClass]="{'reverse': isIncoming}">
+<div class="message" [ngClass]="{'reverse': !message.getIsIncoming()}">
     <mat-icon>account_circle</mat-icon>
     <div class="message-text">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore
-        magna aliquyam erat, sed diam voluptua.
+        {{message.getMessage()}}
     </div>
 </div>

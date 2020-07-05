@@ -1,6 +1,6 @@
 <mat-form-field>
-    <input matInput autocomplete="off">
-    <button mat-icon-button aria-label="" matSuffix>
+    <input matInput autocomplete="off" [formControl]="messageFormControl">
+    <button mat-icon-button aria-label="" matSuffix (click)="sendMessage()">
         <mat-icon>send</mat-icon>
     </button>
 </mat-form-field>
