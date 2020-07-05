@@ -13,9 +13,9 @@ export class MessageService implements OnDestroy {
   private static readonly baseUrl = "http://localhost:3000";
   private static readonly userId = "test-user-jashkdja";
 
-  private timeout: NodeJS.Timeout;
+  private timeout: any;
   private messages: Message[];
-  private messagesSub = new BehaviorSubject<Message[]>([]);
+  private messagesSub = new BehaviorSubject<Message[]>(this.messages);
   private httpHeaders: HttpHeaders;
 
   constructor(
@@ -23,6 +23,8 @@ export class MessageService implements OnDestroy {
   ) {
     this.httpHeaders = new HttpHeaders();
     this.httpHeaders.set("Authorization", MessageService.userId);
+
+    this.messages = [];
 
     this.timeout = setInterval(this.refreshMessages, 1000);
   }

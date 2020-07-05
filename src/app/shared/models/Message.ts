@@ -7,6 +7,10 @@ export class Message {
         private IsIncomming: boolean
     ) { }
 
+    public getMessage(): string { return this.Message };
+    public getTimestamp(): Date { return this.Timestamp };
+    public getIsIncoming(): boolean { return this.IsIncomming };
+
     public static CreateFromResponse(messageResponse: IMessageResponse): Message {
         const timestamp = new Date(messageResponse.timestamp);
 

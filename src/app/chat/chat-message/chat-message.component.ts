@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Message } from "../../shared/models/Message";
+import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
   selector: 'app-chat-message',
@@ -7,10 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./chat-message.component.scss']
 })
 export class ChatMessageComponent implements OnDestroy {
-  @Input() public isIncoming: Observable<boolean>;
-
+  @Input() public message: Message;
   constructor() {
-
   }
 
   public ngOnDestroy(): void {
