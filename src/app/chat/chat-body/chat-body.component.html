@@ -1,3 +1,5 @@
-<ng-container *ngIf="messageService.getMessages() | async as messages">
-    <app-chat-message *ngFor="let message of messages" [message]="message"></app-chat-message>
-</ng-container>
+<div (scroll)="scrolled($event)" #scrollframe>
+    <ng-container *ngIf="messageService.getMessages() | async as messages">
+        <app-chat-message *ngFor="let message of messages" [message]="message" #item></app-chat-message>
+    </ng-container>
+</div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'src/app/shared/services/message.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { MessageService } from 'src/app/shared/services/message.service';
   styleUrls: ['./chat-controls.component.scss']
 })
 export class ChatControlsComponent implements OnInit {
-  public messageFormControl = new FormControl("");
+  public messageFormControl = new FormControl("", Validators.required);
 
   constructor(
     private messageService: MessageService
@@ -21,6 +21,7 @@ export class ChatControlsComponent implements OnInit {
     this.messageService.sendMessage(
       this.messageFormControl.value
     );
+    this.messageFormControl.patchValue("");
   }
 
 }
