@@ -1,10 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { SharedModule } from "../shared.module";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Message } from '../models/Message';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { IMessageResponse } from '../models/IMessageResponse';
+import { BehaviorSubject, Observable, interval, of } from 'rxjs';
 import { ISendMessageRequest } from '../models/ISendMessageRequest';
+import { switchMap, catchError } from "rxjs/operators";
+import { fromFetch } from "rxjs/fetch";
+import { Error } from "../models/Error";
 
 @Injectable({
   providedIn: SharedModule
@@ -16,17 +18,35 @@ export class MessageService implements OnDestroy {
   private timeout: any;
   private messages: Message[];
   private messagesSub = new BehaviorSubject<Message[]>(this.messages);
-  private httpHeaders: HttpHeaders;
 
   constructor(
     private httpClient: HttpClient
   ) {
-    this.httpHeaders = new HttpHeaders();
-    this.httpHeaders.set("Authorization", MessageService.userId);
-
     this.messages = [];
 
-    this.timeout = setInterval(this.refreshMessages, 1000);
+    const httpObservable = interval(1000).pipe(
+      switchMap(() => fromFetch(`${MessageService.baseUrl}/chat`).pipe(
+        switchMap(x => {
+          if (x.ok) {
+            return x.json();
+          }
+          return of({ error: true, message: `Error ${x.status}` });
+        }),
+        catchError(err => {
+          // Network or other error, handle appropriately
+          console.error(err);
+          return of({ error: true, message: err.message })
+        })
+      ))
+    );
+
+    httpObservable.subscribe(data => {
+      if (data instanceof Error)
+        console.log(data);
+
+      this.messages.push(...data.map(message => Message.CreateFromResponse(message)));
+      this.messagesSub.next(this.messages);
+    })
   }
 
   ngOnDestroy(): void {
@@ -46,17 +66,6 @@ export class MessageService implements OnDestroy {
       userId: MessageService.userId
     };
 
-    return this.httpClient.post<void>(`${MessageService.baseUrl}/chat`, messageBody, {
-      headers: this.httpHeaders
-    }).toPromise();
-  }
-
-  private async refreshMessages(): Promise<void> {
-    const response = await this.httpClient.get<IMessageResponse[]>(`${MessageService.baseUrl}/chat`, {
-      headers: this.httpHeaders
-    }).toPromise();
-
-    this.messages.push(...response.map(message => Message.CreateFromResponse(message)));
-    this.messagesSub.next(this.messages);
+    this.httpClient.post(`${MessageService.baseUrl}/chat`, messageBody).subscribe(() => { });
   }
 }
