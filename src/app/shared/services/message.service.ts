@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { SharedModule } from "../shared.module";
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Message } from '../models/Message';
-import { BehaviorSubject, Observable, interval, of } from 'rxjs';
+import { BehaviorSubject, Observable, interval, of, Subscription } from 'rxjs';
 import { ISendMessageRequest } from '../models/ISendMessageRequest';
 import { switchMap, catchError } from "rxjs/operators";
 import { fromFetch } from "rxjs/fetch";
@@ -15,9 +15,9 @@ export class MessageService implements OnDestroy {
   private static readonly baseUrl = "http://localhost:3000";
   private static readonly userId = "test-user-jashkdja";
 
-  private timeout: any;
   private messages: Message[];
   private messagesSub = new BehaviorSubject<Message[]>(this.messages);
+  private subscription: Subscription;
 
   constructor(
     private httpClient: HttpClient
@@ -40,7 +40,7 @@ export class MessageService implements OnDestroy {
       ))
     );
 
-    httpObservable.subscribe(data => {
+    this.subscription = httpObservable.subscribe(data => {
       if (data instanceof Error)
         console.log(data);
 
@@ -50,7 +50,7 @@ export class MessageService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.timeout);
+    this.subscription.unsubscribe();
   }
 
   public getMessages(): Observable<Message[]> {

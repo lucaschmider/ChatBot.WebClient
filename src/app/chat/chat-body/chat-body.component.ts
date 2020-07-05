@@ -10,9 +10,7 @@ export class ChatBodyComponent implements OnInit, AfterViewInit {
   @ViewChild('scrollframe', { static: false }) scrollFrame: ElementRef;
   @ViewChildren('item') itemElements: QueryList<any>;
 
-  private itemContainer: any;
   private scrollContainer: any;
-  private items = [];
   private isNearBottom = true;
   constructor(
     public messageService: MessageService
