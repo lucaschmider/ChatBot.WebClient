@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
   { path: "", redirectTo: "chat", pathMatch: "full" },
-  { path: 'statistics', loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule) }
+  { path: 'statistics', loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule) },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) }
 ];
 
 @NgModule({
