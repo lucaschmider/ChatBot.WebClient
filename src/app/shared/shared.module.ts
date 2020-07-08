@@ -10,6 +10,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -28,7 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MatInputModule,
     MatIconModule,
     NgxChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }
