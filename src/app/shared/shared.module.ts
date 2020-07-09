@@ -9,7 +9,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -28,7 +29,9 @@ import { BrowserModule } from '@angular/platform-browser';
     MatInputModule,
     MatIconModule,
     NgxChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }

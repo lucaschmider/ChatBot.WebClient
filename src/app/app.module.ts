@@ -8,6 +8,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { SharedModule } from "./shared/shared.module";
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
