@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../shared/services/auth.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +9,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", Validators.required)
@@ -19,6 +23,11 @@ export class LoginComponent implements OnInit {
   }
 
   public async login(): Promise<void> {
-    this.authService.signIn(this.loginForm.value);
+    const loginResult = await this.authService.signIn(this.loginForm.value);
+    if (!loginResult.wasSuccessful) {
+      this.snackBar.open(loginResult.errorCode, null, {
+        duration: 3000
+      });
+    }
   }
 }

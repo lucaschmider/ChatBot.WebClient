@@ -4,6 +4,7 @@ import { User } from '../models/User';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { switchMap } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { ILoginResult } from "../models/ILoginResult";
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,14 @@ export class AuthService {
   }
 
   public async signIn({ email, password }: { email: string, password: string }) {
-    await this.afAuth.signInWithEmailAndPassword(email, password);
-    this.router.navigate(['/']);
+    try {
+      await this.afAuth.signInWithEmailAndPassword(email, password);
+      this.router.navigate(['/']);
+      return { wasSuccessful: true } as ILoginResult;
+    } catch (error) {
+      return { wasSuccessful: false, errorCode: error.code } as ILoginResult;
+    }
+
   }
 
   private getUserData(uid: string): Observable<User> {

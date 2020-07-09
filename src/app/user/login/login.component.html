@@ -17,6 +17,6 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button (click)="login()">Login</button>
+        <button mat-button (click)="login()" [disabled]="!loginForm.valid">Login</button>
     </mat-card-actions>
 </mat-card>
