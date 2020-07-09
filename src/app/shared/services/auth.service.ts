@@ -44,6 +44,11 @@ export class AuthService {
 
   }
 
+  public async getIdToken(): Promise<string> {
+    const currentUser = await this.afAuth.currentUser;
+    return currentUser.getIdToken();
+  }
+
   private getUserData(uid: string): Observable<User> {
     return of({
       uid,
