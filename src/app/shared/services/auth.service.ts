@@ -32,7 +32,7 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  public async signIn(email: string, password: string) {
+  public async signIn({ email, password }: { email: string, password: string }) {
     await this.afAuth.signInWithEmailAndPassword(email, password);
     this.router.navigate(['/']);
   }
