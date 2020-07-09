@@ -18,14 +18,13 @@ export class AuthService {
       switchMap(user => {
         // Logged in
         if (user) {
-          this.getUserData(user.uid);
+          return this.getUserData(user.uid);
         } else {
           // Logged out
           return of(null);
         }
       })
-    );
-    console.log("Observable set")
+    )
   }
 
   public async signOut() {
