@@ -24,7 +24,8 @@ export class AuthService {
           return of(null);
         }
       })
-    )
+    );
+    console.log("Observable set")
   }
 
   public async signOut() {
