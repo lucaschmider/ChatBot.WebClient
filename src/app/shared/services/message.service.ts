@@ -4,7 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Message } from '../models/Message';
 import { BehaviorSubject, Observable, interval, of, Subscription } from 'rxjs';
 import { ISendMessageRequest } from '../models/ISendMessageRequest';
-import { switchMap, catchError, flatMap } from "rxjs/operators";
+import { switchMap, catchError, flatMap, tap } from "rxjs/operators";
 import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
 import { AuthService } from './auth.service';
@@ -27,10 +27,11 @@ export class MessageService implements OnDestroy {
     this.messages = [];
 
     const httpObservable = interval(1000).pipe(
+      tap(() => console.log("Refresh")),
       switchMap(async () => {
         const accessToken = await this.authService.getIdToken();
         const httpHeaders = new Headers({
-          Authorization: `Bearer ${accessToken};`
+          Authorization: `Bearer ${accessToken}`
         });
         return fromFetch(`${MessageService.baseUrl}/chat`, { headers: httpHeaders }).pipe(
 
@@ -78,7 +79,7 @@ export class MessageService implements OnDestroy {
 
     const accessToken = await this.authService.getIdToken();
     const httpHeaders = new HttpHeaders({
-      Authorization: `Bearer ${accessToken};`
+      Authorization: `Bearer ${accessToken}`
     });
 
     this.httpClient.post(`${MessageService.baseUrl}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => { });
