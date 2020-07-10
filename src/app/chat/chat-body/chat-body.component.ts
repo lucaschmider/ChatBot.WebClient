@@ -1,26 +1,37 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+  AfterViewInit,
+  OnDestroy
+} from "@angular/core";
 import { MessageService } from "../../shared/services/message.service";
 
 @Component({
-  selector: 'app-chat-body',
-  templateUrl: './chat-body.component.html',
-  styleUrls: ['./chat-body.component.scss']
+  selector: "app-chat-body",
+  templateUrl: "./chat-body.component.html",
+  styleUrls: ["./chat-body.component.scss"]
 })
-export class ChatBodyComponent implements OnInit, AfterViewInit {
-  @ViewChild('scrollframe', { static: false }) scrollFrame: ElementRef;
-  @ViewChildren('item') itemElements: QueryList<any>;
+export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild("scrollframe", { static: false }) scrollFrame: ElementRef;
+  @ViewChildren("item") itemElements: QueryList<any>;
 
   private scrollContainer: any;
   private isNearBottom = true;
-  constructor(
-    public messageService: MessageService
-  ) { }
-
-  ngOnInit(): void {
+  constructor(public messageService: MessageService) {
+    messageService.startSubscription();
   }
+  ngOnDestroy(): void {
+    this.messageService.clearSubscription();
+  }
+
+  ngOnInit(): void {}
   ngAfterViewInit() {
     this.scrollContainer = this.scrollFrame.nativeElement;
-    this.itemElements.changes.subscribe(_ => this.onItemElementsChanged());
+    this.itemElements.changes.subscribe((_) => this.onItemElementsChanged());
   }
 
   private onItemElementsChanged(): void {
@@ -33,7 +44,7 @@ export class ChatBodyComponent implements OnInit, AfterViewInit {
     this.scrollContainer.scroll({
       top: this.scrollContainer.scrollHeight,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   }
 
