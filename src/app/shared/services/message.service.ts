@@ -18,6 +18,7 @@ export class MessageService implements OnDestroy {
 
   private messages: Message[];
   private messagesSub = new BehaviorSubject<Message[]>(this.messages);
+  private httpObservable: Observable<any>;
   private subscription: Subscription;
 
   constructor(
@@ -26,7 +27,7 @@ export class MessageService implements OnDestroy {
   ) {
     this.messages = [];
 
-    const httpObservable = interval(1000).pipe(
+    this.httpObservable = interval(1000).pipe(
       tap(() => console.log("Refresh")),
       switchMap(async () => {
         const accessToken = await this.authService.getIdToken();
@@ -51,7 +52,15 @@ export class MessageService implements OnDestroy {
       flatMap(value => value)
     );
 
-    this.subscription = httpObservable.subscribe(data => {
+
+  }
+
+  public startSubscription() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.subscription = this.httpObservable.subscribe(data => {
       if (data instanceof Error)
         console.log(data);
 
@@ -60,8 +69,18 @@ export class MessageService implements OnDestroy {
     })
   }
 
+  public clearSubscription() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.subscription = null;
+    this.messages = [];
+    this.messagesSub.next(this.messages);
+  }
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.clearSubscription();
   }
 
   public getMessages(): Observable<Message[]> {
