@@ -6,6 +6,7 @@ import { switchMap, flatMap } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { ILoginResult } from "../models/ILoginResult";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: "root"
 })
@@ -56,6 +57,6 @@ export class AuthService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    return this.httpClient.get<User>("http://localhost:3000/user/details", { headers: httpHeaders });
+    return this.httpClient.get<User>(`${environment.backendApi}/user/details`, { headers: httpHeaders });
   }
 }
