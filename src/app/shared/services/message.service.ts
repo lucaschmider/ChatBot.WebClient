@@ -14,7 +14,6 @@ import { AuthService } from "./auth.service";
 })
 export class MessageService implements OnDestroy {
   private static readonly baseUrl = "http://localhost:3000";
-  private static readonly userId = "test-user-jashkdja";
 
   private messages: Message[];
   private messagesSub = new BehaviorSubject<Message[]>(this.messages);
@@ -84,8 +83,7 @@ export class MessageService implements OnDestroy {
     this.messagesSub.next(this.messages);
 
     const messageBody: ISendMessageRequest = {
-      message: message,
-      userId: MessageService.userId
+      message: message
     };
 
     const accessToken = await this.authService.getIdToken();
