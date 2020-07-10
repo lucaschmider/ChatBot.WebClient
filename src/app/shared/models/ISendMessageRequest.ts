@@ -1,4 +1,4 @@
 export interface ISendMessageRequest {
-    userId: string,
-    message: string
+  userId: string;
+  message: string;
 }

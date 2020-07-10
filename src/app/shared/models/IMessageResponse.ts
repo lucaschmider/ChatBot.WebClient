@@ -1,4 +1,4 @@
 export interface IMessageResponse {
-    message: string,
-    timestamp: number
+  message: string;
+  timestamp: number;
 }

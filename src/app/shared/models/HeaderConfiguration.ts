@@ -1,5 +1,5 @@
 export class HeaderConfiguration {
-    public Title: string;
+  public Title: string;
 
-    public static DefaultValue: HeaderConfiguration = { Title: "ChatBot" };
+  public static DefaultValue: HeaderConfiguration = { Title: "ChatBot" };
 }

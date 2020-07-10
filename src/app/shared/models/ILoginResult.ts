@@ -1,4 +1,4 @@
 export interface ILoginResult {
-    wasSuccessful: boolean;
-    errorCode: string;
+  wasSuccessful: boolean;
+  errorCode: string;
 }

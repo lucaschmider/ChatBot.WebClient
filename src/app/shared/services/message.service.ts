@@ -1,13 +1,13 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from "@angular/core";
 import { SharedModule } from "../shared.module";
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Message } from '../models/Message';
-import { BehaviorSubject, Observable, interval, of, Subscription } from 'rxjs';
-import { ISendMessageRequest } from '../models/ISendMessageRequest';
-import { switchMap, catchError, flatMap, tap } from "rxjs/operators";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { Message } from "../models/Message";
+import { BehaviorSubject, Observable, interval, of, Subscription } from "rxjs";
+import { ISendMessageRequest } from "../models/ISendMessageRequest";
+import { switchMap, catchError, flatMap } from "rxjs/operators";
 import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
-import { AuthService } from './auth.service';
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: SharedModule
@@ -21,38 +21,31 @@ export class MessageService implements OnDestroy {
   private httpObservable: Observable<any>;
   private subscription: Subscription;
 
-  constructor(
-    private httpClient: HttpClient,
-    private authService: AuthService
-  ) {
+  constructor(private httpClient: HttpClient, private authService: AuthService) {
     this.messages = [];
 
     this.httpObservable = interval(1000).pipe(
-      tap(() => console.log("Refresh")),
       switchMap(async () => {
         const accessToken = await this.authService.getIdToken();
         const httpHeaders = new Headers({
           Authorization: `Bearer ${accessToken}`
         });
         return fromFetch(`${MessageService.baseUrl}/chat`, { headers: httpHeaders }).pipe(
-
-          switchMap(x => {
+          switchMap((x) => {
             if (x.ok) {
               return x.json();
             }
             return of({ error: true, message: `Error ${x.status}` });
           }),
-          catchError(err => {
+          catchError((err) => {
             // Network or other error, handle appropriately
             console.error(err);
-            return of({ error: true, message: err.message })
+            return of({ error: true, message: err.message });
           })
-        )
+        );
       }),
-      flatMap(value => value)
+      flatMap((value) => value)
     );
-
-
   }
 
   public startSubscription() {
@@ -60,13 +53,12 @@ export class MessageService implements OnDestroy {
       this.subscription.unsubscribe();
     }
 
-    this.subscription = this.httpObservable.subscribe(data => {
-      if (data instanceof Error)
-        console.log(data);
+    this.subscription = this.httpObservable.subscribe((data) => {
+      if (data instanceof Error) console.log(data);
 
-      this.messages.push(...data.map(message => Message.CreateFromResponse(message)));
+      this.messages.push(...data.map((message) => Message.CreateFromResponse(message)));
       this.messagesSub.next(this.messages);
-    })
+    });
   }
 
   public clearSubscription() {

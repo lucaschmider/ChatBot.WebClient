@@ -1,27 +1,29 @@
 <ng-container *ngIf="configurationService.configuration$ | async as configuration">
-    <mat-toolbar color="primary">
-        <span (click)="navigateToRoot()" id="title">{{configuration.Title}}</span>
-        <span class="spacer"></span>
-        <button *ngIf="authService.user$ | async as user ; else loginButton" mat-icon-button aria-label=""
-            [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <ng-template #loginButton>
-            <button mat-icon-button aria-label="" (click)="navigateToLogin()">
-                <mat-icon>account_circle</mat-icon>
-            </button>
-        </ng-template>
-
-
-    </mat-toolbar>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="authService.signOut()">
-            <mat-icon>power_settings_new</mat-icon>
-            <span>Abmelden</span>
-        </button>
-        <button mat-menu-item (click)="navigateToStats()">
-            <mat-icon>trending_up</mat-icon>
-            <span>Statistiken</span>
-        </button>
-    </mat-menu>
+  <mat-toolbar color="primary">
+    <span (click)="navigateToRoot()" id="title">{{ configuration.Title }}</span>
+    <span class="spacer"></span>
+    <button
+      *ngIf="authService.user$ | async as user; else loginButton"
+      mat-icon-button
+      aria-label=""
+      [matMenuTriggerFor]="menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <ng-template #loginButton>
+      <button mat-icon-button aria-label="" (click)="navigateToLogin()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </ng-template>
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="authService.signOut()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Abmelden</span>
+    </button>
+    <button mat-menu-item (click)="navigateToStats()">
+      <mat-icon>trending_up</mat-icon>
+      <span>Statistiken</span>
+    </button>
+  </mat-menu>
 </ng-container>
