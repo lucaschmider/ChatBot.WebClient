@@ -24,7 +24,11 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTabsModule } from '@angular/material/tabs';
 import { InvalidInputComponent } from './invalid-input/invalid-input.component';
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
+  declarations: [HeaderComponent],
+  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule],
   declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent, InvalidInputComponent],
   imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
@@ -36,6 +40,8 @@ import { InvalidInputComponent } from './invalid-input/invalid-input.component';
     NgxChartsModule,
     ReactiveFormsModule,
     MatCardModule,
+    MatSnackBarModule,
+    TranslateModule
     MatSnackBarModule,
     StarRatingModule,
     StarRatingComponent,
