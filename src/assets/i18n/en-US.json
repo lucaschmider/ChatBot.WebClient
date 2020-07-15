@@ -1,3 +1,6 @@
 {
-    "test": "This is a test"
+    "HEADER": {
+        "SIGNOUT": "Sign-Out",
+        "STATISTICS": "Statistics"
+    }
 }

@@ -1,3 +1,6 @@
 {
-    "test": "Das ist ein test"
+    "HEADER": {
+        "SIGNOUT": "Abmelden",
+        "STATISTICS": "Statistiken"
+    }
 }
