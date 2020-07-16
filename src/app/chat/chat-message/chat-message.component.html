@@ -1,6 +1,15 @@
 <div class="message" [ngClass]="{ reverse: !message.getIsIncoming() }">
   <mat-icon>account_circle</mat-icon>
   <div class="message-text">
-    {{ message.getMessage() }}
+    <p *ngIf="!hideRating">
+      {{ message.getMessage() }}
+      <ngx-star-rating *ngIf="message.getMessageType() == 2 && !hideRating" [total]="5" (rated)="messageRated($event)">
+      </ngx-star-rating>
+    </p>
+
+    <p *ngIf="hideRating" class="successfull-rating">
+      <mat-icon inline="true">done</mat-icon>
+      <span>Vielen Dank für Ihre Bewertung!</span>
+    </p>
   </div>
 </div>

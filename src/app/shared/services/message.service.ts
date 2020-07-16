@@ -9,6 +9,7 @@ import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
 import { AuthService } from "./auth.service";
 import { environment } from 'src/environments/environment';
+import { IMessageResponse } from '../models/IMessageResponse';
 
 @Injectable({
   providedIn: SharedModule
@@ -55,7 +56,14 @@ export class MessageService implements OnDestroy {
     this.subscription = this.httpObservable.subscribe((data) => {
       if (data instanceof Error) console.log(data);
 
-      this.messages.push(...data.map((message) => Message.CreateFromResponse(message)));
+      data.forEach(message => {
+        this.messages.push(Message.CreateFromResponse(message));
+
+        if (message.conversationFinished) {
+          this.messages.push(Message.CreateRating());
+        }
+      });
+
       this.messagesSub.next(this.messages);
     });
   }
