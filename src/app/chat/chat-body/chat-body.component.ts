@@ -28,7 +28,7 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.messageService.clearSubscription();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   ngAfterViewInit() {
     this.scrollContainer = this.scrollFrame.nativeElement;
     this.itemElements.changes.subscribe((_) => this.onItemElementsChanged());
@@ -55,7 +55,11 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
     return position > height - threshold;
   }
 
-  scrolled(event: any): void {
+  public scrolled(event: any): void {
     this.isNearBottom = this.isUserNearBottom();
+  }
+
+  public rated(rating: number): void {
+    console.log(rating);
   }
 }

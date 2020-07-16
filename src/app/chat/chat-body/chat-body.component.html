@@ -2,4 +2,5 @@
   <ng-container *ngIf="messageService.getMessages() | async as messages">
     <app-chat-message *ngFor="let message of messages" [message]="message" #item></app-chat-message>
   </ng-container>
+  <ngx-star-rating [total]="5" (rated)="rated($event)"></ngx-star-rating>
 </div>

@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~10.0.2",
     "@angular/router": "~10.0.2",
     "@angular/service-worker": "~10.0.0",
+    "@sreyaj/ng-star-rating": "^2.0.0",
     "@swimlane/ngx-charts": "^14.0.0",
     "firebase": "^7.15.5",
     "rxjs": "~6.6.0",
