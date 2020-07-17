@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { StatisticsService } from 'src/app/shared/services/statistics.service';
 
 @Component({
   selector: "app-statistics-main",
@@ -6,78 +7,37 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./statistics-main.component.scss"]
 })
 export class StatisticsMainComponent implements OnInit {
-  constructor() {}
+  public data: any;
 
-  ngOnInit(): void {}
+  constructor(
+    private statisticsService: StatisticsService
+  ) { }
+
+  ngOnInit(): void {
+    this.statisticsService.getUserSatisfaction().then(feedbacks => {
+      this.data = feedbacks.map(feedback => {
+        return {
+          name: feedback.department,
+          series: feedback.ratings.map(rating => {
+            return {
+              name: rating.time,
+              value: rating.rating
+            }
+          })
+        }
+      })
+    });
+  }
   colorScheme = {
     domain: ["#08DDC1", "#FFDC1B", "#FF5E3A"]
   };
 
+
   refLines = [
-    { value: 80, name: "Ziel" },
-    { value: 60, name: "Aktueller Durchschnitt" },
-    { value: 30, name: "Ursprünglicher Durchschnitt" }
+    // { value: 80, name: "Ziel" },
+    // { value: 60, name: "Aktueller Durchschnitt" },
+    // { value: 30, name: "Ursprünglicher Durchschnitt" }
   ];
 
-  data = [
-    {
-      name: "Versandbüro",
-      series: [
-        {
-          name: "Aug",
-          value: 14
-        },
-        {
-          name: "Sep",
-          value: 35
-        },
-        {
-          name: "Oct",
-          value: 4
-        },
-        {
-          name: "Nov",
-          value: 17
-        },
-        {
-          name: "Dec",
-          value: 14
-        },
-        {
-          name: "Jan",
-          value: 35
-        }
-      ]
-    },
 
-    {
-      name: "Personalabteilung",
-      series: [
-        {
-          name: "Aug",
-          value: 0
-        },
-        {
-          name: "Sep",
-          value: 50
-        },
-        {
-          name: "Oct",
-          value: 60
-        },
-        {
-          name: "Nov",
-          value: 80
-        },
-        {
-          name: "Dec",
-          value: 90
-        },
-        {
-          name: "Jan",
-          value: 60
-        }
-      ]
-    }
-  ];
 }
