@@ -58,8 +58,4 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
   public scrolled(event: any): void {
     this.isNearBottom = this.isUserNearBottom();
   }
-
-  public rated(rating: number): void {
-    console.log(rating);
-  }
 }

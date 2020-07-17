@@ -50,3 +50,15 @@ body {
 .background-accent {
   background-color: mat-color($ChatBot-accent);
 }
+
+.background-primary {
+  background-color: mat-color($ChatBot-accent);
+}
+
+.color-primary {
+  color: mat-color($ChatBot-primary);
+}
+
+.color-accent {
+  color: mat-color($ChatBot-accent);
+}

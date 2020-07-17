@@ -3,8 +3,8 @@
   <div class="message-text background-accent">
     <p *ngIf="!hideRating">
       {{ message.getMessage() }}
-      <ngx-star-rating *ngIf="message.getMessageType() == 2 && !hideRating" [total]="5" (rated)="messageRated($event)">
-      </ngx-star-rating>
+      <app-star-rating *ngIf="message.getMessageType() == 2 && !hideRating" [starCount]="5"
+        (onRated)="messageRated($event)"></app-star-rating>
     </p>
 
     <p *ngIf="hideRating" class="successfull-rating">
