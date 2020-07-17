@@ -19,6 +19,6 @@ export class ChatMessageComponent implements OnDestroy {
 
   public messageRated(rating: number): void {
     this.userInteract.next(rating);
-    this.hideRating = true;
+    new Promise(resolve => setTimeout(resolve, 1000)).then(() => this.hideRating = true)
   }
 }
