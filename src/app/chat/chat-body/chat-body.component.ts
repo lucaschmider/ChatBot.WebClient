@@ -9,6 +9,8 @@ import {
   OnDestroy
 } from "@angular/core";
 import { MessageService } from "../../shared/services/message.service";
+import { Message } from 'src/app/shared/models/Message';
+import { StatisticsService } from "../../shared/services/statistics.service";
 
 @Component({
   selector: "app-chat-body",
@@ -21,7 +23,10 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private scrollContainer: any;
   private isNearBottom = true;
-  constructor(public messageService: MessageService) {
+  constructor(
+    public messageService: MessageService,
+    private statisticsService: StatisticsService
+  ) {
     messageService.startSubscription();
   }
   ngOnDestroy(): void {
@@ -57,5 +62,11 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public scrolled(event: any): void {
     this.isNearBottom = this.isUserNearBottom();
+  }
+
+  public handleUserInteract(rating: number | void, message: Message) {
+    if (typeof (rating) === "number") {
+      this.statisticsService.rateMessage(rating, message);
+    }
   }
 }

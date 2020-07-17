@@ -9,7 +9,6 @@ import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
 import { AuthService } from "./auth.service";
 import { environment } from 'src/environments/environment';
-import { IMessageResponse } from '../models/IMessageResponse';
 
 @Injectable({
   providedIn: SharedModule
