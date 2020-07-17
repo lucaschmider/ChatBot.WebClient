@@ -64,9 +64,9 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isNearBottom = this.isUserNearBottom();
   }
 
-  public handleUserInteract(rating: number | void, message: Message) {
+  public handleUserInteract(rating: number | void) {
     if (typeof (rating) === "number") {
-      this.statisticsService.rateMessage(rating, message);
+      this.statisticsService.rateMessage(rating);
     }
   }
 }
