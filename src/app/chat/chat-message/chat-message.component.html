@@ -1,6 +1,6 @@
 <div class="message" [ngClass]="{ reverse: !message.getIsIncoming() }">
   <mat-icon>account_circle</mat-icon>
-  <div class="message-text">
+  <div class="message-text background-accent">
     <p *ngIf="!hideRating">
       {{ message.getMessage() }}
       <ngx-star-rating *ngIf="message.getMessageType() == 2 && !hideRating" [total]="5" (rated)="messageRated($event)">
