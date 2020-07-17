@@ -20,7 +20,7 @@ export class StatisticsMainComponent implements OnInit {
           name: feedback.department,
           series: feedback.ratings.map(rating => {
             return {
-              name: rating.time,
+              name: new Date(rating.time),
               value: rating.rating
             }
           })
