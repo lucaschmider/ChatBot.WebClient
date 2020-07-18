@@ -2,14 +2,13 @@
   <mat-toolbar color="primary">
     <span (click)="navigateToRoot()" id="title">{{ configuration.Title }}</span>
     <span class="spacer"></span>
-    <button
-      *ngIf="authService.user$ | async as user; else loginButton"
-      mat-icon-button
-      aria-label=""
-      [matMenuTriggerFor]="menu"
-    >
-      <mat-icon>more_vert</mat-icon>
-    </button>
+    <ng-container *ngIf="authService.user$ | async as user; else loginButton">
+      <span id="username">{{ user.name }}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </ng-container>
+
     <ng-template #loginButton>
       <button mat-icon-button aria-label="" (click)="navigateToLogin()">
         <mat-icon>account_circle</mat-icon>
