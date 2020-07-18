@@ -15,6 +15,24 @@
   margin-right: 1rem;
   padding: 1rem;
   border-radius: 5px;
-  background-color: gray;
   max-width: 40%;
+  p {
+    margin: 0;
+  }
+}
+
+.successfull-rating {
+  mat-icon {
+    vertical-align: top;
+    font-size: 1.25em;
+  }
+  span {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 536px) {
+  .message-text {
+    max-width: 95%;
+  }
 }

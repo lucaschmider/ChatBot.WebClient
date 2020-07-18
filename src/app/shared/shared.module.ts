@@ -11,9 +11,10 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-
+import { StarRatingModule } from '@sreyaj/ng-star-rating';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, StarRatingComponent],
   imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule],
   exports: [
     HeaderComponent,
@@ -24,7 +25,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     NgxChartsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StarRatingModule,
+    StarRatingComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
