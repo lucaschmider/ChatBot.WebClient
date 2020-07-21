@@ -13,6 +13,9 @@ import { MatCardModule } from "@angular/material/card";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { StarRatingModule } from '@sreyaj/ng-star-rating';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [HeaderComponent, StarRatingComponent],
   imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule],
@@ -27,7 +30,10 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     MatCardModule,
     MatSnackBarModule,
     StarRatingModule,
-    StarRatingComponent
+    StarRatingComponent,
+    MatBottomSheetModule,
+    MatListModule,
+    MatTableModule
   ]
 })
 export class SharedModule { }

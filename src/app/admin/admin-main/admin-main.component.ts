@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { UseCaseSelectorComponent } from '../use-case-selector/use-case-selector.component';
 
 @Component({
   selector: 'app-admin-main',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private bottomSheet: MatBottomSheet
+  ) {
+    const bottomSheetRef = bottomSheet.open(UseCaseSelectorComponent, {
+      ariaLabel: 'Share on social media'
+    });
+  }
 
   ngOnInit(): void {
   }
