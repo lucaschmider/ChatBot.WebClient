@@ -18,6 +18,13 @@
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
+    <!-- E-Mail Column -->
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-Mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+
     <!-- Weight Column -->
     <ng-container matColumnDef="department">
         <th mat-header-cell *matHeaderCellDef> Abteilung </th>
@@ -27,7 +34,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="uid">
         <th mat-header-cell *matHeaderCellDef class="right-aligned">
-            <button mat-button>
+            <button mat-button (click)="addUser()">
                 <mat-icon>person_add</mat-icon>
             </button> </th>
         <td mat-cell *matCellDef="let element" class="right-aligned">

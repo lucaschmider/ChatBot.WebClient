@@ -16,6 +16,10 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSelectModule, matSelectAnimations } from "@angular/material/select";
+
 @NgModule({
   declarations: [HeaderComponent, StarRatingComponent],
   imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule],
@@ -33,7 +37,10 @@ import { MatTableModule } from '@angular/material/table';
     StarRatingComponent,
     MatBottomSheetModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }
