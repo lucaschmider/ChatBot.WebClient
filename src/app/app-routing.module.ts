@@ -14,7 +14,8 @@ const routes: Routes = [
     canActivateChild: [AuthGuard]
   },
   { path: "user", loadChildren: () => import("./user/user.module").then((m) => m.UserModule) },
-  { path: "", redirectTo: "chat", pathMatch: "full" }
+  { path: "", redirectTo: "chat", pathMatch: "full" },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({
