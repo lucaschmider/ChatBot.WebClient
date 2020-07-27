@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule, matSelectAnimations } from "@angular/material/select";
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [HeaderComponent, StarRatingComponent],
@@ -40,7 +41,8 @@ import { MatSelectModule, matSelectAnimations } from "@angular/material/select";
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }
