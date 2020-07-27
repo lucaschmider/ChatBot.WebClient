@@ -21,7 +21,7 @@ export class UserService {
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${accessToken}`
     });
-
+    console.log(accessToken);
     return await this.httpClient
       .post<User>(`${environment.backendApi}/user`, createUserRequest, { headers: httpHeaders })
       .toPromise();

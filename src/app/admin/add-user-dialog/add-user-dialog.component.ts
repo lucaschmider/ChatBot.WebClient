@@ -9,7 +9,6 @@ import { UserService } from "../../shared/services/user.service";
 export class AddUserDialogComponent implements OnInit {
   public userFormGroup: FormGroup;
   constructor(
-    private userService: UserService
   ) {
     this.userFormGroup = new FormGroup({
       name: new FormControl("", Validators.required),
@@ -23,10 +22,10 @@ export class AddUserDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public async createUser(): Promise<void> {
-    const newUser = await this.userService.CreateUserAsync(
-      this.userFormGroup.value
-    );
-    console.log(newUser);
-  }
+  // public async createUser(): Promise<void> {
+  //   const newUser = await this.userService.CreateUserAsync(
+  //     this.userFormGroup.value
+  //   );
+  //   console.log(newUser);
+  // }
 }

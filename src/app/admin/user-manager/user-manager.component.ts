@@ -31,5 +31,11 @@ export class UserManagerComponent implements OnInit {
     const dialogRef = this.matDialog.open(AddUserDialogComponent, {
       hasBackdrop: true
     });
+    dialogRef.afterClosed().subscribe(async data => {
+      if (data) {
+        const newUser = await this.userService.CreateUserAsync(data);
+        this.dataSource = [...this.dataSource, newUser]
+      }
+    });
   }
 }
