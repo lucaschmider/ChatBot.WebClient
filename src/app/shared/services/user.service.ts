@@ -37,4 +37,15 @@ export class UserService {
       .delete(`${environment.backendApi}/user/${uid}`, { headers: httpHeaders })
       .toPromise();
   }
+
+  public async GetUsersAsync(): Promise<User[]> {
+    const accessToken = await this.authService.getIdToken();
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`
+    });
+
+    return await this.httpClient
+      .get<User[]>(`${environment.backendApi}/user`, { headers: httpHeaders })
+      .toPromise();
+  }
 }
