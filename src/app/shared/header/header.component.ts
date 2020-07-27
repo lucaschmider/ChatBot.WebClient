@@ -13,16 +13,16 @@ export class HeaderComponent implements OnInit {
     public configurationService: HeaderConfigurationService,
     public authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   public navigateToRoot(): void {
     this.router.navigate(["/"]);
   }
 
-  public navigateToStats(): void {
-    this.router.navigate(["/statistics"]);
+  public navigateToSettings(): void {
+    this.router.navigate(["/admin"]);
   }
 
   public navigateToChat(): void {
