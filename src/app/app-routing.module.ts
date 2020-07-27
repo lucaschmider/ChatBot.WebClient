@@ -8,18 +8,13 @@ const routes: Routes = [
     loadChildren: () => import("./chat/chat.module").then((m) => m.ChatModule),
     canActivateChild: [AuthGuard]
   },
-  {
-    path: "statistics",
-    loadChildren: () => import("./statistics/statistics.module").then((m) => m.StatisticsModule),
-    canActivateChild: [AuthGuard]
-  },
   { path: "user", loadChildren: () => import("./user/user.module").then((m) => m.UserModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: "", redirectTo: "chat", pathMatch: "full" },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
