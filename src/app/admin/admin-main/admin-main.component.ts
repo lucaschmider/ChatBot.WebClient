@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { UseCaseSelectorComponent } from '../use-case-selector/use-case-selector.component';
 import { Router } from '@angular/router';
 
 @Component({

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/User';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
-import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { UserService } from 'src/app/shared/services/user.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { auth } from 'firebase';
@@ -29,13 +28,10 @@ const ELEMENT_DATA: User[] = [
 export class UserManagerComponent implements OnInit {
   displayedColumns: string[] = ['isAdmin', 'name', "email", 'department', 'uid'];
   dataSource = ELEMENT_DATA;
-  token = "";
   constructor(
     private matDialog: MatDialog,
-    private userService: UserService,
-    public authService: AuthService
+    private userService: UserService
   ) {
-    authService.getIdToken().then(tkn => this.token = tkn);
   }
 
   ngOnInit(): void {
