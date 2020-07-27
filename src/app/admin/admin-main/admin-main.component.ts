@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-main.component.scss']
 })
 export class AdminMainComponent implements OnInit {
-
+  public subComponent: string = "statistics";
   constructor(
     private router: Router
   ) {
