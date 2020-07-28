@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-main',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AdminMainComponent implements OnInit {
   public subComponent: string = "statistics";
   constructor(
-    private router: Router
+    public authService: AuthService
   ) {
 
   }

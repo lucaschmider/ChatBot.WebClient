@@ -21,7 +21,7 @@
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content *ngIf="authService.user$ | async as user">
         <app-statistics-main *ngIf="subComponent === 'statistics'"></app-statistics-main>
         <app-user-manager *ngIf="subComponent === 'user-manager'"></app-user-manager>
     </mat-sidenav-content>
