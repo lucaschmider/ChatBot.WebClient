@@ -11,15 +11,15 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { StarRatingModule } from '@sreyaj/ng-star-rating';
-import { StarRatingComponent } from './star-rating/star-rating.component';
-import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
+import { StarRatingModule } from "@sreyaj/ng-star-rating";
+import { StarRatingComponent } from "./star-rating/star-rating.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatListModule } from "@angular/material/list";
+import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule, matSelectAnimations } from "@angular/material/select";
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [HeaderComponent, StarRatingComponent],
@@ -45,4 +45,4 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

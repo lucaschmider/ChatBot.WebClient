@@ -1,7 +1,7 @@
 export interface ICreateUserRequest {
-    name: string,
-    email: string,
-    isAdmin: boolean,
-    password: string,
-    department: string
+  name: string;
+  email: string;
+  isAdmin: boolean;
+  password: string;
+  department: string;
 }

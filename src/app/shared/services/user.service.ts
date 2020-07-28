@@ -1,20 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { SharedModule } from "../shared.module";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
-import { User } from '../models/User';
-import { environment } from '../../../environments/environment';
-import { ICreateUserRequest } from '../models/ICreateUserRequest';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AuthService } from "./auth.service";
+import { User } from "../models/User";
+import { environment } from "../../../environments/environment";
+import { ICreateUserRequest } from "../models/ICreateUserRequest";
 
 @Injectable({
   providedIn: SharedModule
 })
 export class UserService {
-
-  constructor(
-    private httpClient: HttpClient,
-    private authService: AuthService
-  ) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) {}
 
   public async CreateUserAsync(createUserRequest: ICreateUserRequest): Promise<User> {
     const accessToken = await this.authService.getIdToken();
@@ -33,9 +29,7 @@ export class UserService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    await this.httpClient
-      .delete(`${environment.backendApi}/user/${uid}`, { headers: httpHeaders })
-      .toPromise();
+    await this.httpClient.delete(`${environment.backendApi}/user/${uid}`, { headers: httpHeaders }).toPromise();
   }
 
   public async GetUsersAsync(): Promise<User[]> {

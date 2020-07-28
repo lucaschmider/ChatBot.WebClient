@@ -6,7 +6,7 @@ import { switchMap, flatMap } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { ILoginResult } from "../models/ILoginResult";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: "root"
 })

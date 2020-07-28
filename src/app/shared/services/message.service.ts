@@ -8,13 +8,12 @@ import { switchMap, catchError, flatMap } from "rxjs/operators";
 import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
 import { AuthService } from "./auth.service";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: SharedModule
 })
 export class MessageService implements OnDestroy {
-
   private messages: Message[];
   private messagesSub = new BehaviorSubject<Message[]>(this.messages);
   private httpObservable: Observable<any>;
@@ -55,7 +54,7 @@ export class MessageService implements OnDestroy {
     this.subscription = this.httpObservable.subscribe((data) => {
       if (data instanceof Error) console.log(data);
 
-      data.forEach(message => {
+      data.forEach((message) => {
         this.messages.push(Message.CreateFromResponse(message));
 
         if (message.conversationFinished) {
@@ -98,6 +97,6 @@ export class MessageService implements OnDestroy {
       Authorization: `Bearer ${accessToken}`
     });
 
-    this.httpClient.post(`${environment.backendApi}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => { });
+    this.httpClient.post(`${environment.backendApi}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => {});
   }
 }

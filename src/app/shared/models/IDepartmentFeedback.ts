@@ -1,7 +1,7 @@
 export interface IDepartmentFeedback {
-    department: string;
-    ratings: {
-        rating: number,
-        time: string
-    }[]
+  department: string;
+  ratings: {
+    rating: number;
+    time: string;
+  }[];
 }

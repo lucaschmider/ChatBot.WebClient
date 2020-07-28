@@ -13,9 +13,9 @@ export class HeaderComponent implements OnInit {
     public configurationService: HeaderConfigurationService,
     public authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public navigateToRoot(): void {
     this.router.navigate(["/"]);

@@ -1,18 +1,14 @@
-import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { AuthService } from "./auth.service";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 import { IDepartmentFeedback } from "../models/IDepartmentFeedback";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class StatisticsService {
-
-  constructor(
-    private authService: AuthService,
-    private httpClient: HttpClient
-  ) { }
+  constructor(private authService: AuthService, private httpClient: HttpClient) {}
 
   public async rateMessage(rating: number): Promise<void> {
     const feedbackBody: any = {
@@ -24,7 +20,9 @@ export class StatisticsService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    this.httpClient.post(`${environment.backendApi}/statistics/feedback`, feedbackBody, { headers: httpHeaders }).subscribe(() => { });
+    this.httpClient
+      .post(`${environment.backendApi}/statistics/feedback`, feedbackBody, { headers: httpHeaders })
+      .subscribe(() => {});
   }
 
   public async getUserSatisfaction() {
@@ -33,6 +31,8 @@ export class StatisticsService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    return this.httpClient.get<IDepartmentFeedback[]>(`${environment.backendApi}/statistics`, { headers: httpHeaders }).toPromise();
+    return this.httpClient
+      .get<IDepartmentFeedback[]>(`${environment.backendApi}/statistics`, { headers: httpHeaders })
+      .toPromise();
   }
 }
