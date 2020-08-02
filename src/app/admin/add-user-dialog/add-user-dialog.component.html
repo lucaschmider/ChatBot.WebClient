@@ -16,7 +16,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Abteilung</mat-label>
             <mat-select formControlName="department">
-                <mat-option value="Human Resources">Human Resources</mat-option>
+                <mat-option *ngFor="let department of departments" [value]="department">{{department}}</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-checkbox formControlName="isAdmin">Administrator</mat-checkbox>
