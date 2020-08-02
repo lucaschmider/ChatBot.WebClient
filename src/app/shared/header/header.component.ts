@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/"]);
   }
 
-  public navigateToStats(): void {
-    this.router.navigate(["/statistics"]);
+  public navigateToSettings(): void {
+    this.router.navigate(["/admin"]);
   }
 
   public navigateToChat(): void {

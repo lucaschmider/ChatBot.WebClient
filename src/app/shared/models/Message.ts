@@ -2,7 +2,12 @@ import { IMessageResponse } from "./IMessageResponse";
 import { MessageType } from "./MessageType";
 
 export class Message {
-  private constructor(private Message: string, private Timestamp: Date, private IsIncomming: boolean, private MessageType: MessageType) { }
+  private constructor(
+    private Message: string,
+    private Timestamp: Date,
+    private IsIncomming: boolean,
+    private MessageType: MessageType
+  ) {}
 
   public getMessage(): string {
     return this.Message;

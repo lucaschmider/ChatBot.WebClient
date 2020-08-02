@@ -11,11 +11,21 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material/card";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { StarRatingModule } from '@sreyaj/ng-star-rating';
-import { StarRatingComponent } from './star-rating/star-rating.component';
+import { StarRatingModule } from "@sreyaj/ng-star-rating";
+import { StarRatingComponent } from "./star-rating/star-rating.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatListModule } from "@angular/material/list";
+import { MatTableModule } from "@angular/material/table";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
 @NgModule({
-  declarations: [HeaderComponent, StarRatingComponent],
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule],
+  declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent],
+  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
     HeaderComponent,
     MatToolbarModule,
@@ -27,7 +37,14 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     MatCardModule,
     MatSnackBarModule,
     StarRatingModule,
-    StarRatingComponent
+    StarRatingComponent,
+    MatBottomSheetModule,
+    MatListModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }
