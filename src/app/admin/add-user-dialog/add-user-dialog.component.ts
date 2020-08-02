@@ -24,11 +24,4 @@ export class AddUserDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // public async createUser(): Promise<void> {
-  //   const newUser = await this.userService.CreateUserAsync(
-  //     this.userFormGroup.value
-  //   );
-  //   console.log(newUser);
-  // }
 }

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { UserService } from 'src/app/shared/services/user.service';
 import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-manager',
@@ -15,6 +16,7 @@ export class UserManagerComponent implements OnInit {
   public dataSource: User[];
   constructor(
     private matDialog: MatDialog,
+    private matSnackBar: MatSnackBar,
     private userService: UserService
   ) {
   }
@@ -36,11 +38,22 @@ export class UserManagerComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(async data => {
       if (data) {
-        const loadingDialogRef = this.matDialog.open(LoadingSpinnerComponent);
-        const newUser = await this.userService.CreateUserAsync(data);
-        this.dataSource = [...this.dataSource, newUser]
-        loadingDialogRef.close();
+
+        await this.createUserAsync(data);
       }
     });
+  }
+
+  private async createUserAsync(data: any) {
+    const loadingDialogRef = this.matDialog.open(LoadingSpinnerComponent);
+    try {
+      const newUser = await this.userService.CreateUserAsync(data);
+      this.dataSource = [...this.dataSource, newUser];
+    } catch (error) {
+      console.log(error);
+      this.matSnackBar.open(error.error.reason, null, { duration: 3000 });
+    } finally {
+      loadingDialogRef.close();
+    }
   }
 }
