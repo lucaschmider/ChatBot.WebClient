@@ -3,6 +3,7 @@ import { User } from 'src/app/shared/models/User';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { UserService } from 'src/app/shared/services/user.service';
+import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-user-manager',
@@ -23,8 +24,10 @@ export class UserManagerComponent implements OnInit {
   }
 
   public async deleteUser(uid: string): Promise<void> {
+    const dialogRef = this.matDialog.open(LoadingSpinnerComponent);
     await this.userService.DeleteUserAsync(uid);
     this.dataSource = this.dataSource.filter(user => user.uid != uid);
+    dialogRef.close();
   }
 
   public addUser(): void {
@@ -33,8 +36,10 @@ export class UserManagerComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(async data => {
       if (data) {
+        const loadingDialogRef = this.matDialog.open(LoadingSpinnerComponent);
         const newUser = await this.userService.CreateUserAsync(data);
         this.dataSource = [...this.dataSource, newUser]
+        loadingDialogRef.close();
       }
     });
   }

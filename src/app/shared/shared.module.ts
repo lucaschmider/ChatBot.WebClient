@@ -18,12 +18,14 @@ import { MatListModule } from "@angular/material/list";
 import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatSelectModule, matSelectAnimations } from "@angular/material/select";
+import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
-  declarations: [HeaderComponent, StarRatingComponent],
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule],
+  declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent],
+  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
     HeaderComponent,
     MatToolbarModule,
@@ -45,4 +47,4 @@ import { MatSidenavModule } from "@angular/material/sidenav";
     MatSidenavModule
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
