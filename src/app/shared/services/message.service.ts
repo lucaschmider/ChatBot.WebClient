@@ -36,7 +36,6 @@ export class MessageService implements OnDestroy {
             return of({ error: true, message: `Error ${x.status}` });
           }),
           catchError((err) => {
-            // Network or other error, handle appropriately
             console.error(err);
             return of({ error: true, message: err.message });
           })
@@ -97,6 +96,6 @@ export class MessageService implements OnDestroy {
       Authorization: `Bearer ${accessToken}`
     });
 
-    this.httpClient.post(`${environment.backendApi}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => {});
+    this.httpClient.post(`${environment.backendApi}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => { });
   }
 }

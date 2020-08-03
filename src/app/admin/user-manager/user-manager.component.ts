@@ -50,7 +50,6 @@ export class UserManagerComponent implements OnInit {
       const newUser = await this.userService.CreateUserAsync(data);
       this.dataSource = [...this.dataSource, newUser];
     } catch (error) {
-      console.log(error);
       this.matSnackBar.open(error.error.reason, null, { duration: 3000 });
     } finally {
       loadingDialogRef.close();

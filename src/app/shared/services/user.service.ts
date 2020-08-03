@@ -10,14 +10,13 @@ import { ICreateUserRequest } from "../models/ICreateUserRequest";
   providedIn: SharedModule
 })
 export class UserService {
-  constructor(private httpClient: HttpClient, private authService: AuthService) {}
+  constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   public async CreateUserAsync(createUserRequest: ICreateUserRequest): Promise<User> {
     const accessToken = await this.authService.getIdToken();
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${accessToken}`
     });
-    console.log(accessToken);
     return await this.httpClient
       .post<User>(`${environment.backendApi}/user`, createUserRequest, { headers: httpHeaders })
       .toPromise();
