@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MasterDataAddDialogComponent } from '../master-data-add-dialog/master-data-add-dialog.component';
+import { MasterDataService } from 'src/app/shared/services/master-data.service';
+import { ICollectionField } from 'src/app/shared/models/ICollectionField';
 
 @Component({
   selector: 'app-master-data-table',
@@ -11,13 +13,23 @@ export class MasterDataTableComponent implements OnInit {
   @Input() public tableName: string;
 
   dataSource = [{ departmentName: "Lorem", mock: "Hallo" }, { departmentName: "Ipsum", mock: "Welt" }, { departmentName: "Dolor", mock: "dhgjs" }]
-  dataColumns = [{ key: "departmentName", name: "Abteilung" }, { key: "mock", name: "Test Daten" }]
-  displayedColumns = ["departmentName", "mock", "deleteData"]
+  dataColumns: ICollectionField[];
+  displayedColumns: string[];
   constructor(
-    private matDialog: MatDialog
-  ) { }
+    private matDialog: MatDialog,
+    private masterDataService: MasterDataService
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.masterDataService.GetCollectionSchemeAsync(this.tableName).then(scheme => {
+      this.dataColumns = scheme.fields;
+      this.displayedColumns = [...scheme.fields.map(x => x.key), "deleteData"];
+    });
+    this.masterDataService.GetKnowledgeAsync().then(data => {
+      this.dataSource = data;
+    })
   }
 
   public addData(): void {
