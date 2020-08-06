@@ -37,6 +37,17 @@ export class MasterDataService {
       .toPromise();
   }
 
+  public async CreateKnowledgeAsync(knowledge: any): Promise<void> {
+    const accessToken = await this.authService.getIdToken();
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`
+    });
+
+    return this.httpClient
+      .post<void>(`${environment.backendApi}/master-data/data/knowledge`, knowledge, { headers: httpHeaders })
+      .toPromise();
+  }
+
   public async GetCollectionSchemeAsync(collection: string): Promise<ICollectionScheme> {
     const accessToken = await this.authService.getIdToken();
     const httpHeaders = new HttpHeaders({

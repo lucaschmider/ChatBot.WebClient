@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MasterDataAddDialogComponent } from '../master-data-add-dialog/master-data-add-dialog.component';
 import { MasterDataService } from 'src/app/shared/services/master-data.service';
 import { ICollectionField } from 'src/app/shared/models/ICollectionField';
+import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-master-data-table',
@@ -33,6 +34,31 @@ export class MasterDataTableComponent implements OnInit {
   }
 
   public addData(): void {
-    this.matDialog.open(MasterDataAddDialogComponent, { data: this.dataColumns })
+    this.matDialog
+      .open(MasterDataAddDialogComponent, { data: this.dataColumns })
+      .afterClosed()
+      .subscribe(data => {
+        this.createData(data);
+      });
+  }
+
+  public async createData(data: any) {
+    if (!data || data === "") {
+      return;
+    }
+
+    const transformedData = this.transformData(data);
+    const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
+    await this.masterDataService.CreateKnowledgeAsync(transformedData);
+    dialogRef.close();
+  }
+
+  public transformData(dialogData: any): any {
+    return {
+      definitiontype: dialogData.definitiontype,
+      description: dialogData.description,
+      synonyms: dialogData.keywords.split(","),
+      name: dialogData.name
+    };
   }
 }
