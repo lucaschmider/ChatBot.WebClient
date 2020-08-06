@@ -4,6 +4,8 @@ import { MasterDataAddDialogComponent } from '../master-data-add-dialog/master-d
 import { MasterDataService } from 'src/app/shared/services/master-data.service';
 import { ICollectionField } from 'src/app/shared/models/ICollectionField';
 import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
+import { Knowledge } from 'src/app/shared/models/Knowledge';
+import { InvalidInputComponent } from 'src/app/shared/invalid-input/invalid-input.component';
 
 @Component({
   selector: 'app-master-data-table',
@@ -13,9 +15,11 @@ import { LoadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-
 export class MasterDataTableComponent implements OnInit {
   @Input() public tableName: string;
 
-  dataSource = [{ departmentName: "Lorem", mock: "Hallo" }, { departmentName: "Ipsum", mock: "Welt" }, { departmentName: "Dolor", mock: "dhgjs" }]
-  dataColumns: ICollectionField[];
-  displayedColumns: string[];
+  public dataSource: any[] = [];
+  public dataColumns: ICollectionField[];
+  public displayedColumns: string[];
+
+
   constructor(
     private matDialog: MatDialog,
     private masterDataService: MasterDataService
@@ -24,13 +28,15 @@ export class MasterDataTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.masterDataService.GetCollectionSchemeAsync(this.tableName).then(scheme => {
+    const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
+    this.masterDataService.getCollectionSchemeAsync(this.tableName).then(scheme => {
       this.dataColumns = scheme.fields;
       this.displayedColumns = [...scheme.fields.map(x => x.key), "deleteData"];
     });
     this.masterDataService.GetKnowledgeAsync().then(data => {
       this.dataSource = data;
-    })
+    });
+    dialogRef.close();
   }
 
   public addData(): void {
@@ -47,18 +53,28 @@ export class MasterDataTableComponent implements OnInit {
       return;
     }
 
-    const transformedData = this.transformData(data);
-    const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
-    await this.masterDataService.CreateKnowledgeAsync(transformedData);
-    dialogRef.close();
+    try {
+      const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
+      const transformedData = this.transformKnowledge(data);
+      await this.masterDataService.createKnowledgeAsync(transformedData);
+      dialogRef.close();
+    } catch (error) {
+      this.matDialog.open(InvalidInputComponent);
+    }
   }
 
-  public transformData(dialogData: any): any {
+  private transformKnowledge(dialogData: any): Knowledge {
     return {
       definitiontype: dialogData.definitiontype,
       description: dialogData.description,
       synonyms: dialogData.keywords.split(","),
       name: dialogData.name
     };
+  }
+
+  public async deleteData(element: any): Promise<void> {
+    const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
+    this.masterDataService.deleteData(element, this.tableName);
+    dialogRef.close();
   }
 }
