@@ -33,7 +33,7 @@ export class MasterDataTableComponent implements OnInit {
       this.dataColumns = scheme.fields;
       this.displayedColumns = [...scheme.fields.map(x => x.key), "deleteData"];
     });
-    this.masterDataService.GetKnowledgeAsync().then(data => {
+    this.masterDataService.getCollectionDataAsync(this.tableName).then(data => {
       this.dataSource = data;
     });
     dialogRef.close();
@@ -55,26 +55,17 @@ export class MasterDataTableComponent implements OnInit {
 
     try {
       const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
-      const transformedData = this.transformKnowledge(data);
-      await this.masterDataService.createKnowledgeAsync(transformedData);
+      const response = await this.masterDataService.createDataAsync(data, this.tableName);
+      this.dataSource = [...this.dataSource, response];
       dialogRef.close();
     } catch (error) {
       this.matDialog.open(InvalidInputComponent);
     }
   }
-
-  private transformKnowledge(dialogData: any): Knowledge {
-    return {
-      definitiontype: dialogData.definitiontype,
-      description: dialogData.description,
-      synonyms: dialogData.keywords.split(","),
-      name: dialogData.name
-    };
-  }
-
   public async deleteData(element: any): Promise<void> {
     const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
     this.masterDataService.deleteData(element, this.tableName);
+    this.dataSource = this.dataSource.filter(el => el !== element);
     dialogRef.close();
   }
 }
