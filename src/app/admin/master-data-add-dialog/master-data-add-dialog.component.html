@@ -3,7 +3,10 @@
     <form [formGroup]="formGroup">
         <mat-form-field appearance="fill" *ngFor="let field of data">
             <mat-label>{{field.name}}</mat-label>
-            <input matInput [formControlName]="field.key">
+            <input matInput [formControlName]="field.key" *ngIf="field.type ==='text'">
+            <mat-select [formControlName]="field.key" *ngIf="field.type === 'options'">
+                <mat-option *ngFor="let option of field.options" [value]="option">{{option}}</mat-option>
+            </mat-select>
         </mat-form-field>
 
     </form>
