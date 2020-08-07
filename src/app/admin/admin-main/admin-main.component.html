@@ -13,7 +13,7 @@
                 <span mat-line>Benutzer anlegen, löschen und bearbeiten.</span>
             </a>
 
-            <a mat-list-item>
+            <a mat-list-item (click)="subComponent = 'master-data'">
                 <mat-icon mat-list-icon>question_answer</mat-icon>
                 <span mat-line>Informationen verwalten</span>
                 <span mat-line>Informationen anlegen, löschen und bearbeiten.</span>
@@ -24,5 +24,6 @@
     <mat-sidenav-content *ngIf="authService.user$ | async as user">
         <app-statistics-main *ngIf="subComponent === 'statistics'"></app-statistics-main>
         <app-user-manager *ngIf="subComponent === 'user-manager'"></app-user-manager>
+        <app-master-data-main *ngIf="subComponent === 'master-data'"></app-master-data-main>
     </mat-sidenav-content>
 </mat-sidenav-container>

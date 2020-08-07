@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MasterDataService } from "../../shared/services/master-data.service";
+import { Department } from 'src/app/shared/models/Department';
 @Component({
   selector: 'app-add-user-dialog',
   templateUrl: './add-user-dialog.component.html',
@@ -12,7 +13,9 @@ export class AddUserDialogComponent implements OnInit {
   constructor(
     masterDataService: MasterDataService
   ) {
-    masterDataService.GetDepartmentsAsync().then(departments => this.departments = departments);
+    masterDataService.getCollectionDataAsync("departments").then((departments: Department[]) => {
+      this.departments = departments.map(d => d.departmentName);
+    });
     this.userFormGroup = new FormGroup({
       name: new FormControl("", Validators.required),
       email: new FormControl("", [Validators.required, Validators.email]),
