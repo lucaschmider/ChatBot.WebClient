@@ -1,7 +1,7 @@
 {
   "name": "ChatBot",
   "short_name": "ChatBot",
-  "theme_color": "#1976d2",
+  "theme_color": "#fdd835",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
