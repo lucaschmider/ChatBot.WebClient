@@ -27,7 +27,7 @@ export class MasterDataService {
     });
 
     return this.httpClient
-      .get<Knowledge[]>(`${environment.backendApi}/master-data/data/${collection}`, { headers: httpHeaders })
+      .get<Knowledge[]>(`${environment.backendApi}/masterdata/data/${collection}`, { headers: httpHeaders })
       .toPromise();
   }
 
@@ -38,7 +38,7 @@ export class MasterDataService {
     });
 
     await this.httpClient
-      .post<void>(`${environment.backendApi}/master-data/data/knowledge`, knowledge, { headers: httpHeaders })
+      .post<void>(`${environment.backendApi}/masterdata/data/knowledge`, knowledge, { headers: httpHeaders })
       .toPromise();
 
   }
@@ -50,7 +50,7 @@ export class MasterDataService {
     });
 
     return this.httpClient
-      .get<ICollectionScheme>(`${environment.backendApi}/master-data/scheme/${collection}`, { headers: httpHeaders })
+      .get<ICollectionScheme>(`${environment.backendApi}/masterdata/scheme/${collection}`, { headers: httpHeaders })
       .toPromise();
   }
 
@@ -60,13 +60,13 @@ export class MasterDataService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    let dataId = element._id;
+    let dataId = element.id;
     if (collection === MasterDataService.knowledgeCollection) {
-      dataId = element.name;
+      dataId = `${element.definitionType}/${element.name}`;
     }
 
     return this.httpClient
-      .delete<void>(`${environment.backendApi}/master-data/data/${collection}/${dataId}`, { headers: httpHeaders })
+      .delete<void>(`${environment.backendApi}/masterdata/data/${collection}/${dataId}`, { headers: httpHeaders })
       .toPromise();
   }
 
@@ -79,15 +79,14 @@ export class MasterDataService {
     let data = element;
     if (collection === MasterDataService.knowledgeCollection) {
       data = {
-        definitiontype: element.definitiontype,
+        definitionType: element.definitionType,
         description: element.description,
         synonyms: element.keywords.split(","),
         name: element.name
       }
     }
-    console.log(data);
     return this.httpClient
-      .post<Department | Knowledge>(`${environment.backendApi}/master-data/data/${collection}`, data, { headers: httpHeaders })
+      .post<Department | Knowledge>(`${environment.backendApi}/masterdata/data/${collection}`, data, { headers: httpHeaders })
       .toPromise();
   }
 }
