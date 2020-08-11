@@ -85,7 +85,6 @@ export class MasterDataService {
         name: element.name
       }
     }
-    console.log(data);
     return this.httpClient
       .post<Department | Knowledge>(`${environment.backendApi}/masterdata/data/${collection}`, data, { headers: httpHeaders })
       .toPromise();

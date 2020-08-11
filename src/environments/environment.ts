@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendApi: "https://localhost:5001/api",
+  backendApi: "http://localhost:5000/api",
   firebase: {
     apiKey: "AIzaSyDKTRPAE_xcL1qGoXQfyw4neg8yjOn5ioI",
     authDomain: "chatbot-dev-ca77a.firebaseapp.com",
