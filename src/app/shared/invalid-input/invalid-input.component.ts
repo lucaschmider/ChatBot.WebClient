@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-invalid-input',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvalidInputComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<InvalidInputComponent>
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public closeDialog(): void {
+    this.dialogRef.close();
   }
 
 }

@@ -54,13 +54,14 @@ export class MasterDataTableComponent implements OnInit {
       return;
     }
 
+    const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
     try {
-      const dialogRef = this.matDialog.open(LoadingSpinnerComponent, { hasBackdrop: false });
       const response = await this.masterDataService.createDataAsync(data, this.tableName);
       this.dataSource = [...this.dataSource, response];
       dialogRef.close();
     } catch (error) {
-      this.matDialog.open(InvalidInputComponent);
+      dialogRef.close();
+      this.matDialog.open(InvalidInputComponent, { hasBackdrop: false });
     }
   }
   public async deleteData(element: any): Promise<void> {
