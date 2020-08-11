@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  backendApi: "https://service.duck.rock",
+  backendApi: "https://service.duck.rocks",
   firebase: {
     apiKey: "AIzaSyC_m7oqT_yiLp5eX4uU1_p4FWfGX5awLy8",
     authDomain: "chatbot-282117.firebaseapp.com",
