@@ -35,6 +35,7 @@ export class MasterDataTableComponent implements OnInit {
     });
     this.masterDataService.getCollectionDataAsync(this.tableName).then(data => {
       this.dataSource = data;
+      console.log(data);
     });
     dialogRef.close();
   }
