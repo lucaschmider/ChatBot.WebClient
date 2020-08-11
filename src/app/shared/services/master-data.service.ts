@@ -60,7 +60,7 @@ export class MasterDataService {
       Authorization: `Bearer ${accessToken}`
     });
 
-    let dataId = element._id;
+    let dataId = element.id;
     if (collection === MasterDataService.knowledgeCollection) {
       dataId = `${element.definitionType}/${element.name}`;
     }
