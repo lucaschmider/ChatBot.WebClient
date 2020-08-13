@@ -30,7 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
-    ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
