@@ -24,7 +24,6 @@
     "@angular/platform-browser": "~10.0.2",
     "@angular/platform-browser-dynamic": "~10.0.2",
     "@angular/router": "~10.0.2",
-    "@angular/service-worker": "~10.0.0",
     "@sreyaj/ng-star-rating": "^2.0.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
