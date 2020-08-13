@@ -17,11 +17,11 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="authService.signOut()">
         <mat-icon>power_settings_new</mat-icon>
-        <span>Abmelden</span>
+        <span>{{"HEADER.SIGNOUT" | translate }}</span>
       </button>
       <button mat-menu-item (click)="navigateToSettings()" *ngIf="user.isAdmin">
         <mat-icon>settings</mat-icon>
-        <span>Administration</span>
+        <span>{{"HEADER.ADMINISTRATION" | translate }}</span>
       </button>
     </mat-menu>
   </ng-container>

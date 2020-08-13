@@ -3,20 +3,20 @@
         <mat-nav-list>
             <a mat-list-item (click)="subComponent = 'statistics'">
                 <mat-icon mat-list-icon>trending_up</mat-icon>
-                <span mat-line>Feedback</span>
-                <span mat-line>Analyse des Feedbacks der Benutzer.</span>
+                <span mat-line>{{"ADMIN.MENU.FEEDBACK" | translate}}</span>
+                <span mat-line>{{"ADMIN.MENU.FEEDBACK_SUBTITLE" | translate}}</span>
             </a>
 
             <a mat-list-item (click)="subComponent = 'user-manager'">
                 <mat-icon mat-list-icon>admin_panel_settings</mat-icon>
-                <span mat-line>Benutzer verwalten</span>
-                <span mat-line>Benutzer anlegen, löschen und bearbeiten.</span>
+                <span mat-line>{{"ADMIN.MENU.MANAGE_USERS" | translate}}</span>
+                <span mat-line>{{"ADMIN.MENU.MANAGE_USERS_SUBTITLE" | translate}}</span>
             </a>
 
             <a mat-list-item (click)="subComponent = 'master-data'">
                 <mat-icon mat-list-icon>question_answer</mat-icon>
-                <span mat-line>Informationen verwalten</span>
-                <span mat-line>Informationen anlegen, löschen und bearbeiten.</span>
+                <span mat-line>{{"ADMIN.MENU.MANAGE_INFOS" | translate}}</span>
+                <span mat-line>{{"ADMIN.MENU.MANAGE_INFOS_SUBTITLE" | translate}}</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>

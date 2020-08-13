@@ -1,8 +1,10 @@
 <mat-tab-group>
-    <mat-tab label="Abteilungen">
-        <app-master-data-table tableName="departments"></app-master-data-table>
+    <mat-tab [label]="'ADMIN.MASTERDATA.DEPARTMENTS' | translate">
+        <app-master-data-table tableName="departments">
+        </app-master-data-table>
     </mat-tab>
-    <mat-tab label="Wissensbasis">
-        <app-master-data-table tableName="knowledge"></app-master-data-table>
+    <mat-tab [label]="'ADMIN.MASTERDATA.KNOWLEDGE' | translate">
+        <app-master-data-table tableName="knowledge">
+        </app-master-data-table>
     </mat-tab>
 </mat-tab-group>

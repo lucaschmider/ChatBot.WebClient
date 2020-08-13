@@ -24,9 +24,11 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTabsModule } from '@angular/material/tabs';
 import { InvalidInputComponent } from './invalid-input/invalid-input.component';
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
+  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule, MatProgressSpinnerModule],
   declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent, InvalidInputComponent],
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
     HeaderComponent,
     MatToolbarModule,
@@ -37,6 +39,8 @@ import { InvalidInputComponent } from './invalid-input/invalid-input.component';
     ReactiveFormsModule,
     MatCardModule,
     MatSnackBarModule,
+    TranslateModule,
+    MatSnackBarModule,
     StarRatingModule,
     StarRatingComponent,
     MatBottomSheetModule,
@@ -46,7 +50,8 @@ import { InvalidInputComponent } from './invalid-input/invalid-input.component';
     MatSelectModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }
