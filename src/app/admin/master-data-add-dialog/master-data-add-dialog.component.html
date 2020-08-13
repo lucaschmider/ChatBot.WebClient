@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Neuen Datensatz anlegen</h2>
+<h2 mat-dialog-title>{{"ADMIN.MASTERDATA.CREATE_DIALOG_TITLE" | translate}}</h2>
 <mat-dialog-content>
     <form [formGroup]="formGroup">
         <mat-form-field appearance="fill" *ngFor="let field of data">
@@ -12,6 +12,7 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Abbrechen</button>
-    <button mat-button [mat-dialog-close]="formGroup.value" [disabled]="formGroup.invalid">Speichern</button>
+    <button mat-button mat-dialog-close>{{"ADMIN.MASTERDATA.CANCEL" | translate}}</button>
+    <button mat-button [mat-dialog-close]="formGroup.value"
+        [disabled]="formGroup.invalid">{{"ADMIN.MASTERDATA.SUBMIT" | translate}}</button>
 </mat-dialog-actions>

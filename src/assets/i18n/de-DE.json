@@ -1,6 +1,47 @@
 {
     "HEADER": {
         "SIGNOUT": "Abmelden",
-        "STATISTICS": "Statistiken"
+        "ADMINISTRATION": "Administration"
+    },
+    "ADMIN": {
+        "MENU": {
+            "FEEDBACK": "Feedback",
+            "FEEDBACK_SUBTITLE": "Analyse des Feedbacks der Benutzer.",
+            "MANAGE_USERS": "Benutzer verwalten",
+            "MANAGE_USERS_SUBTITLE": "Benutzer anlegen, löschen und bearbeiten.",
+            "MANAGE_INFOS": "Informationen verwalten",
+            "MANAGE_INFOS_SUBTITLE": "Informationen anlegen, löschen und bearbeiten."
+        },
+        "MASTERDATA": {
+            "DEPARTMENTS": "Abteilungen",
+            "KNOWLEDGE": "Wissensbasis",
+            "SUBMIT": "Speichern",
+            "CANCEL": "Abbrechen",
+            "CREATE_DIALOG_TITLE": "Neuen Datensatz anlegen",
+            "DELETE": "Löschen"
+        },
+        "MANAGE_USERS": {
+            "DIALOG": {
+                "TITLE": "Neuen Benutzer anlegen",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "PASSWORD": "Passwort",
+                "DEPARTMENT": "Abteilung",
+                "ADMINISTRATOR": "Administrator",
+                "CANCEL": "Abbrechen",
+                "SUBMIT": "Anlegen"
+            },
+            "TABLE": {
+                "ROLE": "Rolle",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "DEPARTMENT": "Abteilung",
+                "DELETE": "Löschen"
+            }
+        },
+        "STATISTICS": {
+            "LEGEND_TITLE": "Abteilungen",
+            "YAXIS_LABEL": "Botzufriedenheit"
+        }
     }
 }

@@ -27,10 +27,8 @@ import { InvalidInputComponent } from './invalid-input/invalid-input.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [HeaderComponent],
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule],
+  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule, MatProgressSpinnerModule],
   declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent, InvalidInputComponent],
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, MatProgressSpinnerModule],
   exports: [
     HeaderComponent,
     MatToolbarModule,
@@ -41,7 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     MatCardModule,
     MatSnackBarModule,
-    TranslateModule
+    TranslateModule,
     MatSnackBarModule,
     StarRatingModule,
     StarRatingComponent,
@@ -52,7 +50,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSelectModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }
