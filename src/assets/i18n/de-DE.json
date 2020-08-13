@@ -8,9 +8,9 @@
             "FEEDBACK": "Feedback",
             "FEEDBACK_SUBTITLE": "Analyse des Feedbacks der Benutzer.",
             "MANAGE_USERS": "Benutzer verwalten",
-            "MANAGE_USERS_SUBTITLE": "Benutzer anlegen, löschen und bearbeiten.",
+            "MANAGE_USERS_SUBTITLE": "Benutzer anlegen, löschen und einsehen.",
             "MANAGE_INFOS": "Informationen verwalten",
-            "MANAGE_INFOS_SUBTITLE": "Informationen anlegen, löschen und bearbeiten."
+            "MANAGE_INFOS_SUBTITLE": "Informationen anlegen, löschen und einsehen."
         },
         "MASTERDATA": {
             "DEPARTMENTS": "Abteilungen",
