@@ -1,30 +1,31 @@
 <h2 mat-dialog-title>{{ "ADMIN.MANAGE_USERS.DIALOG.TITLE" | translate }}</h2>
 <mat-dialog-content>
-  <form [formGroup]="userFormGroup">
-    <mat-form-field appearance="fill">
-      <mat-label>N{{ "ADMIN.MANAGE_USERS.DIALOG.NAME" | translate }}ame</mat-label>
-      <input matInput formControlName="name" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.EMAIL" | translate }}</mat-label>
-      <input matInput type="email" formControlName="email" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.PASSWORD" | translate }}</mat-label>
-      <input matInput type="password" formControlName="password" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.DEPARTMENT" | translate }}</mat-label>
-      <mat-select formControlName="department">
-        <mat-option *ngFor="let department of departments" [value]="department">{{ department }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-checkbox formControlName="isAdmin">{{ "ADMIN.MANAGE_USERS.DIALOG.ADMINISTRATOR" | translate }} </mat-checkbox>
-  </form>
+    <form [formGroup]="userFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.NAME" | translate }}</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.EMAIL" | translate }}</mat-label>
+            <input matInput type="email" formControlName="email" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.PASSWORD" | translate }}</mat-label>
+            <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "ADMIN.MANAGE_USERS.DIALOG.DEPARTMENT" | translate }}</mat-label>
+            <mat-select formControlName="department">
+                <mat-option *ngFor="let department of departments" [value]="department">{{ department }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="isAdmin">{{ "ADMIN.MANAGE_USERS.DIALOG.ADMINISTRATOR" | translate }}
+        </mat-checkbox>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>{{ "ADMIN.MANAGE_USERS.DIALOG.CANCEL" | translate }}</button>
-  <button mat-button [mat-dialog-close]="userFormGroup.value" [disabled]="userFormGroup.invalid">
-    {{ "ADMIN.MANAGE_USERS.DIALOG.SUBMIT" | translate }}
-  </button>
+    <button mat-button mat-dialog-close>{{ "ADMIN.MANAGE_USERS.DIALOG.CANCEL" | translate }}</button>
+    <button mat-button [mat-dialog-close]="userFormGroup.value" [disabled]="userFormGroup.invalid">
+        {{ "ADMIN.MANAGE_USERS.DIALOG.SUBMIT" | translate }}
+    </button>
 </mat-dialog-actions>
