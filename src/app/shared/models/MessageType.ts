@@ -1,5 +1,5 @@
 export enum MessageType {
   PlainText,
-  Button,
+  WelcomeMessage,
   Rating
 }

@@ -37,6 +37,7 @@ export class ChatBodyComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.scrollContainer = this.scrollFrame.nativeElement;
     this.itemElements.changes.subscribe((_) => this.onItemElementsChanged());
+    this.messageService.createWelcomeMessage();
   }
 
   private onItemElementsChanged(): void {

@@ -43,5 +43,18 @@
             "LEGEND_TITLE": "Department",
             "YAXIS_LABEL": "Bot satisfaction"
         }
+    },
+    "CHAT": {
+        "WELCOME": {
+            "GREETING": "Welcome at DuckDuckBot! Ask a question in the textbox below to get started.",
+            "SHOW": "Show possible questions",
+            "HIDE": "Hide possible questions",
+            "KEYWORDS_HEADER": "I can explain the following terms",
+            "DEFINITIONS_HEADER": "And therefore refer to those literature"
+        },
+        "RATING": {
+            "AFTER": "Thank you for your feedback!",
+            "CALL_TO_ACTION": "Did my answers help you?"
+        }
     }
 }
