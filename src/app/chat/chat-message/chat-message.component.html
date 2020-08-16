@@ -1,0 +1,38 @@
+<div class="message" [ngClass]="{ reverse: !message.getIsIncoming() }">
+  <mat-icon>account_circle</mat-icon>
+  <div class="message-text background-accent">
+    <p *ngIf="!hideRating">
+      {{ message.getMessage() }}
+      <app-star-rating *ngIf="message.getMessageType() == 2 && !hideRating" [starCount]="5"
+        (onRated)="messageRated($event)"></app-star-rating>
+      <button mat-button *ngIf="message.getMessageType() == 1" (click)="showOptions = !showOptions">
+        {{ (showOptions ? "CHAT.WELCOME.HIDE" : "CHAT.WELCOME.SHOW") | translate }}
+      </button>
+    </p>
+
+    <p *ngIf="hideRating" class="successfull-rating">
+      <mat-icon inline="true" color="primary">done</mat-icon>
+      <span>{{ "CHAT.RATING.AFTER" | translate}}</span>
+    </p>
+  </div>
+
+
+</div>
+
+<div class="background-accent possible-options" *ngIf="showOptions">
+  <p>
+    {{ "CHAT.WELCOME.KEYWORDS_HEADER" | translate}}
+    <mat-chip-list>
+      <mat-chip *ngFor="let keyword of message.getPossibleQuestions().keywords">{{ keyword }}
+      </mat-chip>
+    </mat-chip-list>
+  </p>
+  <p>
+    {{ "CHAT.WELCOME.DEFINITIONS_HEADER" | translate}}
+    <mat-chip-list>
+      <mat-chip *ngFor="let definitionType of message.getPossibleQuestions().definitionTypes" selected color="primary">
+        {{ definitionType }}
+      </mat-chip>
+    </mat-chip-list>
+  </p>
+</div>

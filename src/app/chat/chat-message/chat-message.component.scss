@@ -1,0 +1,44 @@
+:host {
+  margin: 1rem;
+}
+
+.message {
+  display: flex;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.message-text {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  max-width: 40%;
+  p {
+    margin: 0;
+  }
+}
+
+.successfull-rating {
+  mat-icon {
+    vertical-align: top;
+    font-size: 1.25em;
+  }
+  span {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 536px) {
+  .message-text {
+    max-width: 95%;
+  }
+}
+
+.possible-options {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
+}

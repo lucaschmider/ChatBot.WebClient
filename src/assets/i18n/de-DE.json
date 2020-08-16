@@ -1,0 +1,60 @@
+{
+    "HEADER": {
+        "SIGNOUT": "Abmelden",
+        "ADMINISTRATION": "Administration"
+    },
+    "ADMIN": {
+        "MENU": {
+            "FEEDBACK": "Feedback",
+            "FEEDBACK_SUBTITLE": "Analyse des Feedbacks der Benutzer.",
+            "MANAGE_USERS": "Benutzer verwalten",
+            "MANAGE_USERS_SUBTITLE": "Benutzer anlegen, löschen und einsehen.",
+            "MANAGE_INFOS": "Informationen verwalten",
+            "MANAGE_INFOS_SUBTITLE": "Informationen anlegen, löschen und einsehen."
+        },
+        "MASTERDATA": {
+            "DEPARTMENTS": "Abteilungen",
+            "KNOWLEDGE": "Wissensbasis",
+            "SUBMIT": "Speichern",
+            "CANCEL": "Abbrechen",
+            "CREATE_DIALOG_TITLE": "Neuen Datensatz anlegen",
+            "DELETE": "Löschen"
+        },
+        "MANAGE_USERS": {
+            "DIALOG": {
+                "TITLE": "Neuen Benutzer anlegen",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "PASSWORD": "Passwort",
+                "DEPARTMENT": "Abteilung",
+                "ADMINISTRATOR": "Administrator",
+                "CANCEL": "Abbrechen",
+                "SUBMIT": "Anlegen"
+            },
+            "TABLE": {
+                "ROLE": "Rolle",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "DEPARTMENT": "Abteilung",
+                "DELETE": "Löschen"
+            }
+        },
+        "STATISTICS": {
+            "LEGEND_TITLE": "Abteilungen",
+            "YAXIS_LABEL": "Botzufriedenheit"
+        }
+    },
+    "CHAT": {
+        "WELCOME": {
+            "GREETING": "Willkommen bei DuckDuckBot! Bitte stelle mir deine Fragen im Textfeld unten.",
+            "SHOW": "Mögliche Fragen ansehen",
+            "HIDE": "Mögliche Fragen ausblenden",
+            "KEYWORDS_HEADER": "Ich kann folgende Begriffe erklären",
+            "DEFINITIONS_HEADER": "Dabei kann ich folgende Referenzen verwenden"
+        },
+        "RATING": {
+            "AFTER": "Vielen Dank für Ihre Bewertung!",
+            "CALL_TO_ACTION": "Waren meine Antworten hilfreich?"
+        }
+    }
+}

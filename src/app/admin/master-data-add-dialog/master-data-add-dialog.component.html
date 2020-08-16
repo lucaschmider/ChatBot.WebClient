@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{"ADMIN.MASTERDATA.CREATE_DIALOG_TITLE" | translate}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="formGroup">
+        <mat-form-field appearance="fill" *ngFor="let field of data">
+            <mat-label>{{field.name}}</mat-label>
+            <input matInput [formControlName]="field.key" *ngIf="field.type ==='text'">
+            <mat-select [formControlName]="field.key" *ngIf="field.type === 'options'">
+                <mat-option *ngFor="let option of field.options" [value]="option">{{option}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>{{"ADMIN.MASTERDATA.CANCEL" | translate}}</button>
+    <button mat-button [mat-dialog-close]="formGroup.value"
+        [disabled]="formGroup.invalid">{{"ADMIN.MASTERDATA.SUBMIT" | translate}}</button>
+</mat-dialog-actions>

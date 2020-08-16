@@ -1,0 +1,60 @@
+{
+    "HEADER": {
+        "SIGNOUT": "Sign Out",
+        "ADMINISTRATION": "Settings"
+    },
+    "ADMIN": {
+        "MENU": {
+            "FEEDBACK": "Feedback",
+            "FEEDBACK_SUBTITLE": "Analysis of user feedback.",
+            "MANAGE_USERS": "Manage users",
+            "MANAGE_USERS_SUBTITLE": "Create, delete and list users.",
+            "MANAGE_INFOS": "Manage Masterdata",
+            "MANAGE_INFOS_SUBTITLE": "Create, delete and list master data."
+        },
+        "MASTERDATA": {
+            "DEPARTMENTS": "Departments",
+            "KNOWLEDGE": "Knowledgebase",
+            "SUBMIT": "Save",
+            "CANCEL": "Cancel",
+            "CREATE_DIALOG_TITLE": "Create new data set",
+            "DELETE": "Remove"
+        },
+        "MANAGE_USERS": {
+            "DIALOG": {
+                "TITLE": "Create user",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "PASSWORD": "Password",
+                "DEPARTMENT": "Department",
+                "ADMINISTRATOR": "Administrator",
+                "CANCEL": "Cancel",
+                "SUBMIT": "Create"
+            },
+            "TABLE": {
+                "ROLE": "Role",
+                "NAME": "Name",
+                "EMAIL": "E-Mail",
+                "DEPARTMENT": "Department",
+                "DELETE": "Delete"
+            }
+        },
+        "STATISTICS": {
+            "LEGEND_TITLE": "Department",
+            "YAXIS_LABEL": "Bot satisfaction"
+        }
+    },
+    "CHAT": {
+        "WELCOME": {
+            "GREETING": "Welcome at DuckDuckBot! Ask a question in the textbox below to get started.",
+            "SHOW": "Show possible questions",
+            "HIDE": "Hide possible questions",
+            "KEYWORDS_HEADER": "I can explain the following terms",
+            "DEFINITIONS_HEADER": "And therefore refer to those literature"
+        },
+        "RATING": {
+            "AFTER": "Thank you for your feedback!",
+            "CALL_TO_ACTION": "Did my answers help you?"
+        }
+    }
+}

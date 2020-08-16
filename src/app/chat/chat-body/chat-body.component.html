@@ -1,0 +1,6 @@
+<div (scroll)="scrolled($event)" #scrollframe>
+  <ng-container *ngIf="messageService.getMessages() | async as messages">
+    <app-chat-message *ngFor="let message of messages" [message]="message" (userInteract)="handleUserInteract($event)"
+      #item></app-chat-message>
+  </ng-container>
+</div>
