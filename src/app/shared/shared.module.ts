@@ -24,7 +24,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTabsModule } from '@angular/material/tabs';
 import { InvalidInputComponent } from './invalid-input/invalid-input.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
   imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule, MatProgressSpinnerModule],
@@ -51,7 +52,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatCheckboxModule,
     MatSidenavModule,
     MatTabsModule,
+    MatChipsModule,
     TranslateModule
-  ]
+  ],
+  providers: [TranslatePipe]
 })
 export class SharedModule { }

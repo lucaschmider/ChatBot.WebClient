@@ -9,6 +9,8 @@ import { fromFetch } from "rxjs/fetch";
 import { Error } from "../models/Error";
 import { AuthService } from "./auth.service";
 import { environment } from "src/environments/environment";
+import { PossibleQuestionsResponse } from '../models/PossibleQuestionsResponse';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: SharedModule
@@ -19,7 +21,10 @@ export class MessageService implements OnDestroy {
   private httpObservable: Observable<any>;
   private subscription: Subscription;
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) {
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService,
+    private translatePipe: TranslatePipe) {
     this.messages = [];
 
     this.httpObservable = interval(1000).pipe(
@@ -57,7 +62,8 @@ export class MessageService implements OnDestroy {
         this.messages.push(Message.CreateFromResponse(message));
 
         if (message.conversationFinished) {
-          this.messages.push(Message.CreateRating());
+          const callToAction = this.translatePipe.transform("CHAT.RATING.CALL_TO_ACTION")
+          this.messages.push(Message.CreateRating(callToAction));
         }
       });
 
@@ -97,5 +103,21 @@ export class MessageService implements OnDestroy {
     });
 
     this.httpClient.post(`${environment.backendApi}/chat`, messageBody, { headers: httpHeaders }).subscribe(() => { });
+  }
+
+  public async createWelcomeMessage(): Promise<void> {
+    const accessToken = await this.authService.getIdToken();
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`
+    });
+
+    this.httpClient
+      .get<PossibleQuestionsResponse>(`${environment.backendApi}/chat/questions`, { headers: httpHeaders })
+      .subscribe(possibleQuestions => {
+        console.log(possibleQuestions);
+        const greeting = this.translatePipe.transform("CHAT.WELCOME.GREETING");
+        this.messages.push(Message.CreateWelcomeMessage(greeting, possibleQuestions));
+        this.messagesSub.next(this.messages);
+      });
   }
 }
