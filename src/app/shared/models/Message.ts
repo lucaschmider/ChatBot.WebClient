@@ -8,7 +8,7 @@ export class Message {
     private IsIncomming: boolean,
     private MessageType: MessageType,
     private PossibleQuestions?: PossibleQuestionsResponse
-  ) { }
+  ) {}
 
   public getMessage(): string {
     return this.Message;

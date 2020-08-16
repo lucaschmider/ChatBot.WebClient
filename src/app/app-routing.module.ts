@@ -9,12 +9,16 @@ const routes: Routes = [
     canActivateChild: [AuthGuard]
   },
   { path: "user", loadChildren: () => import("./user/user.module").then((m) => m.UserModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivateChild: [AuthGuard, AdminGuard] },
-  { path: "", redirectTo: "chat", pathMatch: "full" },
+  {
+    path: "admin",
+    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule),
+    canActivateChild: [AuthGuard, AdminGuard]
+  },
+  { path: "", redirectTo: "chat", pathMatch: "full" }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

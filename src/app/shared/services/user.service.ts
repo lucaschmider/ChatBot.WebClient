@@ -10,7 +10,7 @@ import { ICreateUserRequest } from "../models/ICreateUserRequest";
   providedIn: SharedModule
 })
 export class UserService {
-  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService) {}
 
   public async CreateUserAsync(createUserRequest: ICreateUserRequest): Promise<User> {
     const accessToken = await this.authService.getIdToken();

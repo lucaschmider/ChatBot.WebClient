@@ -15,13 +15,12 @@ export class ChatMessageComponent implements OnDestroy {
   public hideRating = false;
   public ratingDisabled = false;
   public showOptions = false;
-  constructor() { }
+  constructor() {}
 
-  public ngOnDestroy(): void { }
+  public ngOnDestroy(): void {}
 
   public messageRated(rating: number): void {
     this.userInteract.next(rating);
     this.hideRating = true;
   }
-
 }

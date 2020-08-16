@@ -1,4 +1,4 @@
 export class PossibleQuestionsResponse {
-    public definitionTypes: string[];
-    public keywords: string[];
+  public definitionTypes: string[];
+  public keywords: string[];
 }

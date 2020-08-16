@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthService } from "./auth.service";
 import { SharedModule } from "../shared.module";
@@ -11,14 +11,9 @@ import { Department } from "../models/Department";
   providedIn: SharedModule
 })
 export class MasterDataService {
-
   private static readonly knowledgeCollection = "knowledge";
 
-
-  constructor(
-    private authService: AuthService,
-    private httpClient: HttpClient
-  ) { }
+  constructor(private authService: AuthService, private httpClient: HttpClient) {}
 
   public async getCollectionDataAsync(collection: string): Promise<Knowledge[] | Department[]> {
     const accessToken = await this.authService.getIdToken();
@@ -40,7 +35,6 @@ export class MasterDataService {
     await this.httpClient
       .post<void>(`${environment.backendApi}/masterdata/data/knowledge`, knowledge, { headers: httpHeaders })
       .toPromise();
-
   }
 
   public async getCollectionSchemeAsync(collection: string): Promise<ICollectionScheme> {
@@ -83,10 +77,12 @@ export class MasterDataService {
         description: element.description,
         synonyms: element.keywords.split(","),
         name: element.name
-      }
+      };
     }
     return this.httpClient
-      .post<Department | Knowledge>(`${environment.backendApi}/masterdata/data/${collection}`, data, { headers: httpHeaders })
+      .post<Department | Knowledge>(`${environment.backendApi}/masterdata/data/${collection}`, data, {
+        headers: httpHeaders
+      })
       .toPromise();
   }
 }

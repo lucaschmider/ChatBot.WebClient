@@ -1,4 +1,4 @@
 export interface ICollectionField {
-    key: string;
-    name: string;
+  key: string;
+  name: string;
 }

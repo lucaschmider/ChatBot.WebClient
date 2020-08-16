@@ -1,29 +1,29 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened>
-        <mat-nav-list>
-            <a mat-list-item (click)="subComponent = 'statistics'">
-                <mat-icon mat-list-icon>trending_up</mat-icon>
-                <span mat-line>{{"ADMIN.MENU.FEEDBACK" | translate}}</span>
-                <span mat-line>{{"ADMIN.MENU.FEEDBACK_SUBTITLE" | translate}}</span>
-            </a>
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item (click)="subComponent = 'statistics'">
+        <mat-icon mat-list-icon>trending_up</mat-icon>
+        <span mat-line>{{ "ADMIN.MENU.FEEDBACK" | translate }}</span>
+        <span mat-line>{{ "ADMIN.MENU.FEEDBACK_SUBTITLE" | translate }}</span>
+      </a>
 
-            <a mat-list-item (click)="subComponent = 'user-manager'">
-                <mat-icon mat-list-icon>admin_panel_settings</mat-icon>
-                <span mat-line>{{"ADMIN.MENU.MANAGE_USERS" | translate}}</span>
-                <span mat-line>{{"ADMIN.MENU.MANAGE_USERS_SUBTITLE" | translate}}</span>
-            </a>
+      <a mat-list-item (click)="subComponent = 'user-manager'">
+        <mat-icon mat-list-icon>admin_panel_settings</mat-icon>
+        <span mat-line>{{ "ADMIN.MENU.MANAGE_USERS" | translate }}</span>
+        <span mat-line>{{ "ADMIN.MENU.MANAGE_USERS_SUBTITLE" | translate }}</span>
+      </a>
 
-            <a mat-list-item (click)="subComponent = 'master-data'">
-                <mat-icon mat-list-icon>question_answer</mat-icon>
-                <span mat-line>{{"ADMIN.MENU.MANAGE_INFOS" | translate}}</span>
-                <span mat-line>{{"ADMIN.MENU.MANAGE_INFOS_SUBTITLE" | translate}}</span>
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
+      <a mat-list-item (click)="subComponent = 'master-data'">
+        <mat-icon mat-list-icon>question_answer</mat-icon>
+        <span mat-line>{{ "ADMIN.MENU.MANAGE_INFOS" | translate }}</span>
+        <span mat-line>{{ "ADMIN.MENU.MANAGE_INFOS_SUBTITLE" | translate }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-    <mat-sidenav-content *ngIf="authService.user$ | async as user">
-        <app-statistics-main *ngIf="subComponent === 'statistics'"></app-statistics-main>
-        <app-user-manager *ngIf="subComponent === 'user-manager'"></app-user-manager>
-        <app-master-data-main *ngIf="subComponent === 'master-data'"></app-master-data-main>
-    </mat-sidenav-content>
+  <mat-sidenav-content *ngIf="authService.user$ | async as user">
+    <app-statistics-main *ngIf="subComponent === 'statistics'"></app-statistics-main>
+    <app-user-manager *ngIf="subComponent === 'user-manager'"></app-user-manager>
+    <app-master-data-main *ngIf="subComponent === 'master-data'"></app-master-data-main>
+  </mat-sidenav-content>
 </mat-sidenav-container>

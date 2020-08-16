@@ -20,15 +20,24 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { MatTabsModule } from '@angular/material/tabs';
-import { InvalidInputComponent } from './invalid-input/invalid-input.component';
-import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { MatTabsModule } from "@angular/material/tabs";
+import { InvalidInputComponent } from "./invalid-input/invalid-input.component";
+import { TranslateModule, TranslatePipe } from "@ngx-translate/core";
 import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, HttpClientModule, TranslateModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    HttpClientModule,
+    TranslateModule,
+    MatProgressSpinnerModule
+  ],
   declarations: [HeaderComponent, StarRatingComponent, LoadingSpinnerComponent, InvalidInputComponent],
   exports: [
     HeaderComponent,
@@ -57,4 +66,4 @@ import { MatChipsModule } from "@angular/material/chips";
   ],
   providers: [TranslatePipe]
 })
-export class SharedModule { }
+export class SharedModule {}

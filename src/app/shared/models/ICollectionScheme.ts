@@ -1,6 +1,6 @@
 import { ICollectionField } from "./ICollectionField";
 
 export interface ICollectionScheme {
-    collection: string;
-    fields: ICollectionField[];
+  collection: string;
+  fields: ICollectionField[];
 }

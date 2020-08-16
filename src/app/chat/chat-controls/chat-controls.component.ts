@@ -10,9 +10,9 @@ import { MessageService } from "src/app/shared/services/message.service";
 export class ChatControlsComponent implements OnInit {
   public messageFormControl = new FormControl("", Validators.required);
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public sendMessage(): void {
     if (this.messageFormControl.invalid) return;
